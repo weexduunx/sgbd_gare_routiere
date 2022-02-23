@@ -1,0 +1,13 @@
+#Fix Rewrite
+Options -Multiviews
+ 
+# Mod Rewrite
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /sgbd_gare_routiere-1/
+ 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+ 
+# utilisé pour les pages PHP telles que "yoursite.com/login.php" deviendra "yoursite.com/login/"
+RewriteRule ^([a-z_]+)\/?$ $1.php [NC]
