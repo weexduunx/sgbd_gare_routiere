@@ -23,38 +23,38 @@
             </ul>
  
             <?php
-                // check if users / customer was logged in
-                // if user was logged in, show "Edit Profile", "Orders" and "Logout" options
+                // Vérifiez si les utilisateurs / client ont été connectés
+                // Si l'utilisateur a été connecté, affichez "Modifier le profil", "Commandes" et "Déconnexion".
             if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true && $_SESSION['niveau_dacces']=='Customer'){
             ?>
             <ul class="nav navbar-nav navbar-right">
-                <li <?php echo $page_title=="Edit Profile" ? "class='active'" : ""; ?>>
+                <li <?php echo $page_title=="Modifier le Profil" ? "class='active'" : ""; ?>>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                         <?php echo $_SESSION['prenom']; ?>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="<?php echo $home_url; ?>logout.php">Logout</a></li>
+                        <li><a href="<?php echo $home_url; ?>deconnexion.php">Se deconnecter</a></li>
                     </ul>
                 </li>
             </ul>
             <?php
             }
     
-            // if user was not logged in, show the "login" and "register" options
+            // Si l'utilisateur n'était pas connecté, affichez les options "Connexion" et "Enregistrer"
             else{
             ?>
             <ul class="nav navbar-nav navbar-right">
-                <li <?php echo $page_title=="Login" ? "class='active'" : ""; ?>>
+                <li <?php echo $page_title=="Connexion" ? "class='active'" : ""; ?>>
                     <a href="<?php echo $home_url; ?>login">
-                        <span class="glyphicon glyphicon-log-in"></span> Log In
+                        <span class="glyphicon glyphicon-log-in"></span> Se connecter
                     </a>
                 </li>
-            
-                <li <?php echo $page_title=="Register" ? "class='active'" : ""; ?>>
+          
+                <li <?php echo $page_title=="Inscription" ? "class='active'" : ""; ?>>
                     <a href="<?php echo $home_url; ?>register">
-                        <span class="glyphicon glyphicon-check"></span> Register
+                        <span class="glyphicon glyphicon-check"></span> S'inscrire
                     </a>
                 </li>
             </ul>
