@@ -47,13 +47,13 @@
             ?>
             <ul class="nav navbar-nav navbar-right">
                 <li <?php echo $page_title=="Connexion" ? "class='active'" : ""; ?>>
-                    <a href="<?php echo $home_url; ?>login">
+                   <a href="<?php echo $home_url; ?>login">
                         <span class="glyphicon glyphicon-log-in"></span> Se connecter
                     </a>
                 </li>
           
                 <li <?php echo $page_title=="Inscription" ? "class='active'" : ""; ?>>
-                    <a href="<?php echo $home_url; ?>register">
+                    <a href="<?php echo $home_url; ?>inscription">
                         <span class="glyphicon glyphicon-check"></span> S'inscrire
                     </a>
                 </li>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
     <!-- set the page title, for seo purposes too -->
-    <title><?php echo isset($page_title) ? strip_tags($page_title) : "Store Front"; ?></title>
+    <title><?php echo isset($page_title) ? strip_tags($page_title) : "Bokk Yakaar"; ?></title>
  
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen" />
@@ -30,7 +30,7 @@
         ?>
         <div class='col-md-12'>
             <div class="page-header">
-                <h1><?php echo isset($page_title) ? $page_title : "The Code of a Ninja"; ?></h1>
+               <h1><?php echo isset($page_title) ? $page_title : "Don Spirit Code"; ?></h1>
             </div>
         </div>
         <?php

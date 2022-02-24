@@ -85,23 +85,23 @@ echo "<div class='col-sm-6 col-md-4 col-md-offset-4'>";
         </div>";
     }
     
-    // tell the user if access denied
+    // Dites à l'utilisateur si l'accès est refusé
     if($access_denied){
         echo "<div class='alert alert-danger margin-top-40' role='alert'>
             Accès refusé.<br /><br />
-            Votre nom d'utilisateur ou mot de passe, peut-être incorrect
+            Votre nom d'utilisateur ou mot de passe semble être incorrect, Veuillez réessayer svp!!! 
         </div>";
     }
  
-    // actual HTML login form
+    // Formulaire de connexion HTML
     echo "<div class='account-wall'>";
         echo "<div id='my-tab-content' class='tab-content'>";
             echo "<div class='tab-pane active' id='login'>";
                 echo "<img class='profile-img' src='images/login-icon.png'>";
-                echo "<form class='form-signin' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
+               echo "<form class='form-signin' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
                     echo "<input type='text' name='email' class='form-control' placeholder='Email' required autofocus />";
-                    echo "<input type='password' name='password' class='form-control' placeholder='Password' required />";
-                    echo "<input type='submit' class='btn btn-lg btn-primary btn-block' value='Log In' />";
+                    echo "<input type='password' name='password' class='form-control' placeholder='Mot de passe' required />";
+                    echo "<input type='submit' class='btn btn-lg btn-primary btn-block' value='Se Connecter' />";
                 echo "</form>";
             echo "</div>";
         echo "</div>";

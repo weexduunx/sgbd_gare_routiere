@@ -70,4 +70,68 @@ class Utilisateur{
         // renvoie false si l'e-mail n'existe pas dans la base de données
         return false;
     }
+
+    // create new user record
+        function creer(){
+        
+            // to get time stamp for 'created' field
+            $this->created=date('Y-m-d H:i:s');
+        
+            // insert query
+            $query = "INSERT INTO
+                        " . $this->table_name . "
+                    SET
+                        prenom = :prenom,
+                        nom = :nom,
+                        email = :email,
+                        tel = :tel,
+                        adresse = :adresse,
+                        password = :password,
+                        niveau_dacces = :niveau_dacces,
+                        status = :status,
+                        created = :created";
+        
+            // prepare the query
+            $stmt = $this->conn->prepare($query);
+        
+            // sanitize
+            $this->prenom=htmlspecialchars(strip_tags($this->prenom));
+            $this->nom=htmlspecialchars(strip_tags($this->nom));
+            $this->email=htmlspecialchars(strip_tags($this->email));
+            $this->tel=htmlspecialchars(strip_tags($this->tel));
+            $this->adresse=htmlspecialchars(strip_tags($this->adresse));
+            $this->password=htmlspecialchars(strip_tags($this->password));
+            $this->niveau_dacces=htmlspecialchars(strip_tags($this->niveau_dacces));
+            $this->status=htmlspecialchars(strip_tags($this->status));
+        
+            // bind the values
+            $stmt->bindParam(':prenom', $this->prenom);
+            $stmt->bindParam(':nom', $this->nom);
+            $stmt->bindParam(':email', $this->email);
+            $stmt->bindParam(':tel', $this->tel);
+            $stmt->bindParam(':adresse', $this->adresse);
+        
+            // hash the password before saving to database
+            $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
+            $stmt->bindParam(':password', $password_hash);
+        
+            $stmt->bindParam(':niveau_dacces', $this->niveau_dacces);
+            $stmt->bindParam(':status', $this->status);
+            $stmt->bindParam(':created', $this->created);
+        
+            // execute the query, also check if query was successful
+            if($stmt->execute()){
+                return true;
+            }else{
+                $this->showError($stmt);
+                return false;
+            }
+        
+        }
+
+        public function showError($stmt){
+            echo "<pre>";
+                print_r($stmt->errorInfo());
+            echo "</pre>";
+        }
 }
