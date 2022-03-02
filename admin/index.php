@@ -40,14 +40,14 @@ $page_title="Tableau de bord";
         <!--Debut Sidebar / aside -->
         <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
             <div class="mdc-drawer__header">
-                <a href="index.html" class="brand-logo">
+                <a href="<?php echo $home_url; ?>admin/index.php" class="brand-logo">
                     <img src="../assets/images/logo.svg" alt="logo">
                 </a>
             </div>
             <div class="mdc-drawer__content">
                 <div class="user-info">
-                    <p class="name">Clyde Miles</p>
-                    <p class="email">clydemiles@elenor.us</p>
+                    <p class="name"><?php echo $_SESSION['prenom']; ?> <?php echo $_SESSION['nom']; ?></p>
+                    <p class="email">email@email.com</p>
                 </div>
                 <div class="mdc-list-group">
                     <nav class="mdc-list mdc-drawer-menu">
@@ -144,26 +144,11 @@ $page_title="Tableau de bord";
                     </nav>
                 </div>
                 <div class="profile-actions">
-                    <a href="javascript:;">Settings</a>
+                    <a href="javascript:;">Paramétres</a>
                     <span class="divider"></span>
-                    <a href="javascript:;">Logout</a>
+                    <a href="<?php echo $home_url; ?>deconnexion.php">Se déconnecter</a>
                 </div>
-                <div class="mdc-card premium-card">
-                    <div class="d-flex align-items-center">
-                        <div class="mdc-card icon-card box-shadow-0">
-                            <i class="mdi mdi-shield-outline"></i>
-                        </div>
-                        <div>
-                            <p class="mt-0 mb-1 ml-2 font-weight-bold tx-12">Material Dash</p>
-                            <p class="mt-0 mb-0 ml-2 tx-10">Pro available</p>
-                        </div>
-                    </div>
-                    <p class="tx-8 mt-3 mb-1">More elements. More Pages.</p>
-                    <p class="tx-8 mb-3">Starting from $25.</p>
-                    <a href="https://www.bootstrapdash.com/product/material-design-admin-template/" target="_blank">
-                        <span class="mdc-button mdc-button--raised mdc-button--white">Upgrade to Pro</span>
-                    </a>
-                </div>
+                
             </div>
         </aside>
         <!-- Fin Sidebar / aside -->
@@ -174,14 +159,14 @@ $page_title="Tableau de bord";
                 <div class="mdc-top-app-bar__row">
                     <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                         <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
-                        <span class="mdc-top-app-bar__title">Greetings Clyde!</span>
+                        <span class="mdc-top-app-bar__title">Bienvenue <?php echo $_SESSION['prenom']; ?>!</span>
                         <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
                             <i class="material-icons mdc-text-field__icon">search</i>
                             <input class="mdc-text-field__input" id="text-field-hero-input">
                             <div class="mdc-notched-outline">
                                 <div class="mdc-notched-outline__leading"></div>
                                 <div class="mdc-notched-outline__notch">
-                                    <label for="text-field-hero-input" class="mdc-floating-label">Search..</label>
+                                    <label for="text-field-hero-input" class="mdc-floating-label">Rechercher..</label>
                                 </div>
                                 <div class="mdc-notched-outline__trailing"></div>
                             </div>
@@ -194,7 +179,7 @@ $page_title="Tableau de bord";
                   <span class="figure">
                     <img src="../assets/images/faces/face1.jpg" alt="user" class="user">
                   </span>
-                  <span class="user-name">Clyde Miles</span>
+                  <span class="user-name"><?php echo $_SESSION['prenom']; ?> <?php echo $_SESSION['nom']; ?></span>
                 </span>
               </button>
                             <div class="mdc-menu mdc-menu-surface" tabindex="-1">
@@ -204,7 +189,7 @@ $page_title="Tableau de bord";
                                             <i class="mdi mdi-account-edit-outline text-primary"></i>
                                         </div>
                                         <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                                            <h6 class="item-subject font-weight-normal">Edit profile</h6>
+                                            <h6 class="item-subject font-weight-normal">Editer le profil</h6>
                                         </div>
                                     </li>
                                     <li class="mdc-list-item" role="menuitem">
@@ -212,7 +197,9 @@ $page_title="Tableau de bord";
                                             <i class="mdi mdi-settings-outline text-primary"></i>
                                         </div>
                                         <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                                            <h6 class="item-subject font-weight-normal">Logout</h6>
+                                            <h6 class="item-subject font-weight-normal">
+                                                <a href="<?php echo $home_url; ?>deconnexion.php">Se déconnecter</a>
+                                            </h6>
                                         </div>
                                     </li>
                                 </ul>
@@ -332,8 +319,8 @@ $page_title="Tableau de bord";
                         </div>
                         <div class="menu-button-container d-none d-md-block">
                             <button class="mdc-button mdc-menu-button">
-                <i class="mdi mdi-arrow-down-bold-box"></i>
-              </button>
+                                <i class="mdi mdi-arrow-down-bold-box"></i>
+                            </button>
                             <div class="mdc-menu mdc-menu-surface" tabindex="-1">
                                 <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
                                     <li class="mdc-list-item" role="menuitem">
@@ -349,7 +336,9 @@ $page_title="Tableau de bord";
                                             <i class="mdi mdi-logout-variant text-primary"></i>
                                         </div>
                                         <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                                            <h6 class="item-subject font-weight-normal">Logout</h6>
+                                            <h6 class="item-subject font-weight-normal">
+                                                <a href="<?php echo $home_url; ?>deconnexion.php">Se déconnecter</a>
+                                            </h6>
                                         </div>
                                     </li>
                                 </ul>
@@ -366,32 +355,36 @@ $page_title="Tableau de bord";
                         <div class="mdc-layout-grid__inner">
                             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                                 <div class="mdc-card">
-                                   
                                     <div class="d-block d-sm-flex justify-content-between align-items-center">
                                         <!--Script PHP pour afficher les alertes et autres infos -->
                                             <?php
-                                                echo 
-                                                '<h5 class="card-sub-title mb-2 mb-sm-0">';
+                                                echo'<h3 class="card-sub-title mb-2 mb-sm-0">';
                                                 // Obtenir des valeurs de paramètre et éviter l'avis d'index non défini
                                                 $action = isset($_GET['action']) ? $_GET['action'] : "";
-                                        
+                                                
+                                                // Si la connexion a réussi
+                                                if($action=='login_success'){
+                                                    echo "<div class='mdc-button mdc-button--raised filled-button--success mdc-ripple-upgraded'>";
+                                                        echo "<strong>salut " . $_SESSION['prenom'] . ", content de te revoir!</strong>";
+                                                    echo "</div>";
+                                                }
                                                 // Dites à l'utilisateur qu'il est déjà connecté
                                                 if($action=='already_logged_in'){
-                                                    echo "<div class='alert alert-info'>";
-                                                        echo "<strong>You</strong> are already logged in.";
+                                                    echo "<div class='mdc-button mdc-button--raised filled-button--info mdc-ripple-upgradedalert alert-info'>";
+                                                        echo "<strong>Vous</strong> êtes actuellement connecté.";
                                                     echo "</div>";
                                                 }
                                         
                                                 else if($action=='logged_in_as_admin'){
-                                                    echo "<div class='alert alert-info'>";
-                                                        echo "<strong>You</strong> are logged in as admin.";
+                                                    echo "<div class='mdc-button mdc-button--raised filled-button--info mdc-ripple-upgradedalert alert-info'>";
+                                                        echo "<strong>Vous</strong> vous êtes connectés en tant que Administrateur.";
                                                     echo "</div>";
                                                 }
                                         
-                                                echo "<div class='alert alert-info'>";
-                                                    echo "Contents of your admin section will be here.";
+                                                echo "<div class='mdc-button mdc-button--raised filled-button--info mdc-ripple-upgradedalert alert-info'>";
+                                                    echo "Le contenu de votre section administrative sera ici.";
                                                 echo "</div>";
-                                                echo'</h5>';
+                                                echo'</h3>';
                                             ?>
                                         <!--Script PHP pour afficher les alertes et autres infos -->
                                     </div>
