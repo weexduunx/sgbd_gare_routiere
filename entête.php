@@ -8,7 +8,7 @@
  
     <!-- set the page title, for seo purposes too -->
     <title><?php echo isset($page_title) ? strip_tags($page_title) : "Bokk Yakaar"; ?></title>
- 
+
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen" />
  

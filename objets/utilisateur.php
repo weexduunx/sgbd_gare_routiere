@@ -71,13 +71,13 @@ class Utilisateur{
         return false;
     }
 
-    // create new user record
+    // Créer un nouvel enregistrement d'utilisateur
         function creer(){
         
-            // to get time stamp for 'created' field
+            // Obtenir un timbre de temps pour le champ «créé»
             $this->created=date('Y-m-d H:i:s');
         
-            // insert query
+            // insérer la requête
             $query = "INSERT INTO
                         " . $this->table_name . "
                     SET
@@ -91,7 +91,7 @@ class Utilisateur{
                         status = :status,
                         created = :created";
         
-            // prepare the query
+            // préparer la requête
             $stmt = $this->conn->prepare($query);
         
             // sanitize
@@ -104,14 +104,14 @@ class Utilisateur{
             $this->niveau_dacces=htmlspecialchars(strip_tags($this->niveau_dacces));
             $this->status=htmlspecialchars(strip_tags($this->status));
         
-            // bind the values
+            // Lier les valeurs
             $stmt->bindParam(':prenom', $this->prenom);
             $stmt->bindParam(':nom', $this->nom);
             $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':tel', $this->tel);
             $stmt->bindParam(':adresse', $this->adresse);
         
-            // hash the password before saving to database
+            // hachage le mot de passe avant d'économiser sur la base de données
             $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
             $stmt->bindParam(':password', $password_hash);
         
@@ -119,7 +119,7 @@ class Utilisateur{
             $stmt->bindParam(':status', $this->status);
             $stmt->bindParam(':created', $this->created);
         
-            // execute the query, also check if query was successful
+            // exécuter la requête, vérifiez également si la requête a réussi
             if($stmt->execute()){
                 return true;
             }else{
@@ -133,5 +133,54 @@ class Utilisateur{
             echo "<pre>";
                 print_r($stmt->errorInfo());
             echo "</pre>";
+        }
+
+                // Lire tous les enregistrements d'utilisateurs
+        function lireTout($from_record_num, $records_per_page){
+        
+            // Requête pour lire tous les enregistrements d'utilisateurs, avec la clause limite de pagination
+            $query = "SELECT
+                        id,
+                        prenom,
+                        nom,
+                        email,
+                        tel,
+                        niveau_dacces,
+                        created
+                    FROM " . $this->table_name . "
+                    ORDER BY id DESC
+                    LIMIT ?, ?";
+        
+            // Préparer la déclaration de requête
+            $stmt = $this->conn->prepare( $query );
+        
+            // Variables de clause limite de liaison
+            $stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
+            $stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
+        
+            // exécuter l'ordre
+            $stmt->execute();
+        
+            // Valeurs de retour
+            return $stmt;
+        }
+
+        // utilisé pour les utilisateurs de pagination
+        public function compter(){
+        
+            // Requête pour sélectionner tous les enregistrements d'utilisateur
+            $query = "SELECT id FROM " . $this->table_name . "";
+        
+            // Préparer la déclaration de requête
+            $stmt = $this->conn->prepare($query);
+        
+            // exécuter l'ordre
+            $stmt->execute();
+        
+            // Obtenir le nombre de lignes
+            $num = $stmt->rowCount();
+        
+            // retourne le nombre de ligne
+            return $num;
         }
 }

@@ -119,3 +119,8 @@ div#blueimp-gallery div.modal {
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
+
+#textPers {
+    color: #ffffff;
+    text-align: center;
+}
