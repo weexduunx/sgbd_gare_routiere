@@ -40,6 +40,7 @@ if($_POST){
         $_SESSION['niveau_dacces'] = $utilisateur->niveau_dacces;
         $_SESSION['prenom'] = htmlspecialchars($utilisateur->prenom, ENT_QUOTES, 'UTF-8') ;
         $_SESSION['nom'] = $utilisateur->nom;
+        $_SESSION['email'] = $utilisateur->email;
     
         // Si le niveau d'accès est «admin», rediriger vers la section administrative
         if($utilisateur->niveau_dacces=='Admin'){
@@ -59,56 +60,90 @@ if($_POST){
 }
  
 // Inclure l'en-tête de page HTML
-include_once "entête.php";
- 
-echo "<div class='col-sm-6 col-md-4 col-md-offset-4'>";
- 
+include_once "entêtelogin.php";
+  
     // Obtenez la valeur «Action» dans le paramètre URL pour afficher les messages d'invite correspondants
     $action=isset($_GET['action']) ? $_GET['action'] : "";
     
     // Dites à l'utilisateur qu'il n'est pas encore connecté
     if($action =='not_yet_logged_in'){
-        echo "<div class='alert alert-danger margin-top-40' role='alert'>Veuillez vous connecters connecter.</div>";
+        echo "<div class='alert alert-warning alert-info fade show' role='alert'>
+        Veuillez connecter svp!.
+        <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
+        </div>";
     }
     
     // Dites à l'utilisateur de se connecter
     else if($action=='please_login'){
-        echo "<div class='alert alert-info'>
+        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
             <strong>Veuillez vous connecter pour accéder à cette page.</strong>
+            <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
     
     // dire que l'utilisateur est vérifié
     else if($action=='email_verified'){
-        echo "<div class='alert alert-success'>
+        echo "<div class='alert alert-warning alert-success fade show' role='alert'>
             <strong>Votre adresse e-mail a été validée.</strong>
+            <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
-    
+   
     // Dites à l'utilisateur si l'accès est refusé
     if($access_denied){
-        echo "<div class='alert alert-danger margin-top-40' role='alert'>
-            Accès refusé.<br /><br />
-            Votre nom d'utilisateur ou mot de passe semble être incorrect, Veuillez réessayer svp!!! 
+        echo "<div class='alert alert-warning alert-danger fade show' role='alert'>
+            <strong>Accès refusé</strong><br>
+            Veuillez réessayer, l'email ou le mot de passe est incorrect!!! 
+            <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
  
     // Formulaire de connexion HTML
-    echo "<div class='account-wall'>";
-        echo "<div id='my-tab-content' class='tab-content'>";
-            echo "<div class='tab-pane active' id='login'>";
-                echo "<img class='profile-img' src='images/login-icon.png'>";
-               echo "<form class='form-signin' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
-                    echo "<input type='text' name='email' class='form-control' placeholder='Email' required autofocus />";
-                    echo "<input type='password' name='password' class='form-control' placeholder='Mot de passe' required />";
-                    echo "<input type='submit' class='btn btn-lg btn-primary btn-block' value='Se Connecter' />";
-                echo "</form>";
+    
+    /**echo "<img class='profile-img' src='images/login-icon.png' width='50' height='50'>";*/
+    echo "<form class='form-signin' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
+        echo '<div class="mdc-layout-grid">';
+            echo '<div class="mdc-layout-grid__inner">';
+                echo '<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">';
+                    echo '<div class="mdc-text-field w-100">';
+                           echo '<input class="mdc-text-field__input" name="email" id="text-field-hero-input" required autofocus>';
+                           echo '<div class="mdc-line-ripple"></div>';
+                           echo '<label for="text-field-hero-input" class="mdc-floating-label">Email</label>';
+                    echo '</div>';
+                echo '</div>';
+                echo '<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">';
+                    echo '<div class="mdc-text-field w-100">';
+                            echo '<input class="mdc-text-field__input" name="password" type="password" id="text-field-hero-input" required>';
+                            echo '<div class="mdc-line-ripple"></div>';
+                            echo '<label for="text-field-hero-input" class="mdc-floating-label">Mot de Passe</label>';
+                    echo '</div>';
+                echo'</div>';
+                echo'<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">';
+                    echo '<div class="mdc-form-field">';
+                        echo '<div class="mdc-checkbox">';
+                            echo '<input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1" />';
+                            echo '<div class="mdc-checkbox__background">';
+                                echo '<svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">';
+                                    echo '<path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>';
+                                echo '</svg>';
+                                echo '<div class="mdc-checkbox__mixedmark"></div>';
+                            echo '</div>';
+                        echo '</div>';
+                        echo '<label for="checkbox-1">Se souvenir</label>';
+                    echo '</div>';
+                echo '</div>';
+                echo '<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop d-flex align-items-center justify-content-end">';
+                    echo '<a href="#">Mot de passe oublié</a>';
+                echo '</div>';
+                echo '<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">';
+                    echo "<input type='submit' class='mdc-button mdc-button--raised w-100' value='Se Connecter' />";
+                echo '</div>';
+                
             echo "</div>";
         echo "</div>";
-    echo "</div>";
- 
-echo "</div>";
+    echo "</form>";
+
  
 // footer HTML and JavaScript codes
-include_once "pied.php";
+include_once "piedlogin.php";
 ?>
