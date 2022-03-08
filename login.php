@@ -67,15 +67,15 @@ include_once "entêtelogin.php";
     
     // Dites à l'utilisateur qu'il n'est pas encore connecté
     if($action =='not_yet_logged_in'){
-        echo "<div class='alert alert-warning alert-info fade show' role='alert'>
+        echo "<div class='alert alert-info alert-dismissible fade show' role='alert'>
         Veuillez connecter svp!.
         <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
-    
+   
     // Dites à l'utilisateur de se connecter
     else if($action=='please_login'){
-        echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        echo "<div class='alert alert-info alert-dismissible fade show' role='alert'>
             <strong>Veuillez vous connecter pour accéder à cette page.</strong>
             <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
         </div>";
@@ -83,15 +83,15 @@ include_once "entêtelogin.php";
     
     // dire que l'utilisateur est vérifié
     else if($action=='email_verified'){
-        echo "<div class='alert alert-warning alert-success fade show' role='alert'>
-            <strong>Votre adresse e-mail a été validée.</strong>
+        echo "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+           <strong>Votre adresse e-mail a été validée.</strong>
             <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>
         </div>";
     }
    
     // Dites à l'utilisateur si l'accès est refusé
     if($access_denied){
-        echo "<div class='alert alert-warning alert-danger fade show' role='alert'>
+        echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
             <strong>Accès refusé</strong><br>
             Veuillez réessayer, l'email ou le mot de passe est incorrect!!! 
             <button type='button' class='btn-close' data-coreui-dismiss='alert' aria-label='Close'></button>

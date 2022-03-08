@@ -8,10 +8,11 @@
      <!-- CoreUI for Bootstrap CSS -->
     <link href="assets/coreui/css/coreui.min.css" rel="stylesheet" >
     <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Material Dash</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.css.map">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
@@ -19,7 +20,7 @@
      <!-- End plugin css for this page -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="assets/css/demo/style.css">
-    <!-- End layout styles -->
+   <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
 </head>
 
