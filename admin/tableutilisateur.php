@@ -3,11 +3,13 @@
 <table class="table table-hoverable " id="userstable">
   <thead>
     <tr>
-      <th ></th>
+      <th></th>
       <th>Prenom</th>
       <th>Nom</th>
       <th>Email</th>
       <th>N° téléphone</th>
+      <th>N° Permis</th>
+      <th>CIN</th>
       <th>Adresse</th>
       <th></th>
     </tr>

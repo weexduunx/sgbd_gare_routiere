@@ -8,6 +8,7 @@ class Utilisateur{
  
     // Propriétés d'objet
     public $id;
+    public $photo;
     public $prenom;
     public $nom;
     public $email;
@@ -23,13 +24,14 @@ class Utilisateur{
     // constructeur
     public function __construct($db){
         $this->conn = $db;
+
     }
 
     // Vérifiez si le courrier électronique est donné dans la base de données
     function emailExists(){
     
         // requête pour vérifier si un email existe
-        $query = "SELECT id, prenom, nom, niveau_dacces, password, status
+        $query = "SELECT id, prenom, nom, tel, photo,  niveau_dacces, password, status
                 FROM " . $this->table_name . "
                 WHERE email = ?
                 LIMIT 0,1";
@@ -59,6 +61,8 @@ class Utilisateur{
             $this->id = $row['id'];
             $this->prenom = $row['prenom'];
             $this->nom = $row['nom'];
+            $this->tel = $row['tel'];
+            $this->photo = $row['photo'];
             $this->niveau_dacces = $row['niveau_dacces'];
             $this->password = $row['password'];
             $this->status = $row['status'];

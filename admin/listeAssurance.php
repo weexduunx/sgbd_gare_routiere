@@ -7,22 +7,22 @@
    
     // inclure des classes et des objets
     include_once '../configuration/bd.php';
-    include_once '../objets/utilisateur.php';
+    include_once '../objets/assurance.php';
     
     // Obtenir la connexion de base de données
     $basededonnee = new Basededonnee();
     $db = $basededonnee->connectBD();
    
     //initialiser les objets
-    $utilisateur = new Utilisateur($db);
+    $utilisateur = new Assurance($db);
     
     // Définir le titre de la page
-    $page_title = "Liste des Membres";
+    $page_title = "Liste des Assurés";
 
     //inclure l'entête
     include "entête.php";
     //inclure la table de données
-    include "page/tableliste.php";
+    include "page/assurance.php";
     //inclure le pied de page
     include "pied.php";
 

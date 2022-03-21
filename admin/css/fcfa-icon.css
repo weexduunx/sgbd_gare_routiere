@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'fcfa-icon';
+  src:
+    url('../fonts/fcfa-icon.ttf?1hxm6i') format('truetype'),
+    url('../fonts/fcfa-icon.woff?1hxm6i') format('woff'),
+    url('../fonts/fcfa-icon.svg?1hxm6i#fcfa-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="fcfa-"], [class*=" fcfa-"] {
+  font-family: 'fcfa-icon' !important;
+  font-size: 70%;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: auto;
+}
+
+.fcfa-icon:before {
+  content: "\e900";
+}
+.fcfa-2x {
+  font-size: 2em;
+}
+.fcfa-3x {
+  font-size: 3em;
+}
+.fcfa-4x {
+  font-size: 4em;
+}
+.fcfa-5x {
+  font-size: 5em;
+}

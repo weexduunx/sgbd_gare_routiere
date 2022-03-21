@@ -9,7 +9,8 @@
     <link href="assets/coreui/css/coreui.min.css" rel="stylesheet" >
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Material Dash</title>
+
+    <title><?php echo isset($page_title) ? strip_tags($page_title) : "Bokk Yakaar"; ?></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../assets/vendors/mdi/css/materialdesignicons.css.map">

@@ -21,110 +21,99 @@
                             </a>
                             </li>
                         </div>
-                    <div class="mdc-list-item mdc-drawer-item">
-                        <li <?php echo $page_title=="Utilisateurs" ? "class='active'" : ""; ?> >
-                            <a class="mdc-drawer-link" href="<?php echo $home_url; ?>admin/listeUtilisateur.php">
-                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
-                            track_changes
-                            </i>
-                            Liste des utilisateurs
-                            </a>
-                        </li>
-                    </div>
+                    
                     <div class="mdc-list-item mdc-drawer-item">
                         <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="ui-sub-menu">
-                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i> UI Features
+                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">folder_special</i> Gestion Membres
                             <i class="mdc-drawer-arrow material-icons">chevron_right</i>
                         </a>
+                        
                         <div class="mdc-expansion-panel" id="ui-sub-menu">
                             <nav class="mdc-list mdc-drawer-submenu">
+                                
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="pages/ui-features/buttons.html">
-                                        Buttons
+                                    <li <?php echo $page_title=="Utilisateurs" ? "class='active'" : ""; ?> >
+                                        <a class="mdc-drawer-link" href="<?php echo $home_url; ?>admin/listeUtilisateur.php">
+                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
+                                        list
+                                        </i>
+                                        Listes
+                                        </a>
+                                    </li>
+                                </div>
+                                
+                                <div class="mdc-list-item mdc-drawer-item">
+                                
+                                    <a class="mdc-drawer-link" href="#">
+                                    <i class="fcfa-icon fcfa-2x mdc-list-item__start-detail mdc-drawer-item-icon"> </i>
+                                        Cotisation
                                     </a>
                                 </div>
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="pages/ui-features/typography.html">
-                                        Typography
+                                    <a class="mdc-drawer-link" href="#">
+                                    <i class="fcfa-icon fcfa-2x mdc-list-item__start-detail mdc-drawer-item-icon"> </i>
+                                        Paiement
+                                    </a>
+                                </div>
+                                <div class="mdc-list-item mdc-drawer-item">
+                                    <a class="mdc-drawer-link" href="#">
+                                        Commande
                                     </a>
                                 </div>
                             </nav>
                         </div>
                     </div>
+                    <div class="mdc-list-item mdc-drawer-item">
+                        <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sous_menu1">
+                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">folder_special</i> Assurance
+                            <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+                        </a>
+                        <div class="mdc-expansion-panel" id="sous_menu1">
+                            <nav class="mdc-list mdc-drawer-submenu">
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="pages/tables/basic-tables.html">
-                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">grid_on</i> Tables
+                                    <a class="mdc-drawer-link" href="#">
+                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
+                                        add_circle
+                                        </i>
+                                        Ajouter
                                     </a>
                                 </div>
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="pages/charts/chartjs.html">
-                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pie_chart_outlined</i> Charts
-                                    </a>
-                                </div>
-                                <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sample-page-submenu">
-                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">pages</i> Sample Pages
-                                        <i class="mdc-drawer-arrow material-icons">chevron_right</i>
-                                    </a>
-                                    <div class="mdc-expansion-panel" id="sample-page-submenu">
-                                        <nav class="mdc-list mdc-drawer-submenu">
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/blank-page.html">
-                            Blank Page
-                            </a>
-                                            </div>
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/403.html">
-                            403
-                            </a>
-                                            </div>
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/404.html">
-                            404
-                            </a>
-                                            </div>
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/500.html">
-                            500
-                            </a>
-                                            </div>
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/505.html">
-                            505
-                            </a>
-                                            </div>
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/login.html">
-                            Login
-                            </a>
-                                            </div>
-                                            <div class="mdc-list-item mdc-drawer-item">
-                                                <a class="mdc-drawer-link" href="pages/samples/register.html">
-                            Register
-                            </a>
-                                            </div>
-                                        </nav>
-                                    </div>
-                                </div>
-                                <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="https://www.bootstrapdash.com/demo/material-admin-free/jquery/documentation/documentation.html" target="_blank">
-                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i> Documentation
+                                    <a class="mdc-drawer-link" href="listeAssurance.php">
+                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
+                                            list
+                                        </i>
+                                        liste
                                     </a>
                                 </div>
                             </nav>
+                        </div>
+                    </div>
+                    <div class="mdc-list-item mdc-drawer-item">
+                        <a class="mdc-drawer-link" href="#">
+                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">directions_car</i>Gestion des véhicules
+                        </a>
+                    </div>
+                  
+                    <div class="mdc-list-item mdc-drawer-item">
+                        <a class="mdc-drawer-link" href="#" target="_blank">
+                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">description</i> Rapports
+                        </a>
+                    </div>
+                </nav>
                 </div>
-                <div class="profile-actions">
-                            <a href="javascript:;">Paramétres</a>
-                            <span class="divider"></span>
-                            <a href="<?php echo $home_url; ?>deconnexion.php">Se déconnecter</a>
-                </div> 
+                    <div class="profile-actions">
+                        <!-- <a href="javascript:;">Paramétres</a> -->
+                        <span class="divider"></span>
+                        <a href="<?php echo $home_url; ?>deconnexion.php">Se déconnecter</a>
+                    </div> 
             </div>
         </aside>
     <!-- Fin Sidebar / aside -->
             <!--Debut Emballage Principal -->
-                <div class="main-wrapper mdc-drawer-app-content">
+                <div class="main-wrapper mdc-drawer-app-content bg-white">
                     <!--Debut Header/Navbar  -->
-                        <header class="mdc-top-app-bar">
+                        <header class="mdc-top-app-bar bg-white">
                             <div class="mdc-top-app-bar__row">
                                 <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                                     <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
@@ -146,7 +135,8 @@
                                         <button class="mdc-button mdc-menu-button">
                                             <span class="d-flex align-items-center">
                                                 <span class="figure">
-                                                    <img src="../assets/images/login-icon.png" alt="user" class="user">
+                                                    <!-- <img src="../assets/images/login-icon.png" alt="user" class="user"> -->
+                                                    <img src="uploads/<?php echo $_SESSION['photo'];?>" alt="user" class="user" width="25">
                                                 </span>
                                                 <span class="user-name">
                                                     <?php echo $_SESSION['prenom']; ?> <?php echo $_SESSION['nom']; ?>
@@ -185,14 +175,6 @@
                                             <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical">
                                                 <li class="mdc-list-item" role="menuitem">
                                                     <div class="item-thumbnail item-thumbnail-icon-only">
-                                                        <i class="mdi mdi-lock-outline text-primary"></i>
-                                                    </div>
-                                                    <div class="item-content d-flex align-items-start flex-column justify-content-center">
-                                                        <h6 class="item-subject font-weight-normal">Lock screen</h6>
-                                                    </div>
-                                                </li>
-                                                <li class="mdc-list-item" role="menuitem">
-                                                    <div class="item-thumbnail item-thumbnail-icon-only">
                                                         <i class="mdi mdi-logout-variant text-primary"></i>
                                                     </div>
                                                     <div class="item-content d-flex align-items-start flex-column justify-content-center">
@@ -212,4 +194,4 @@
                         <div class="page-wrapper mdc-toolbar-fixed-adjust">
                             <?php echo'<h1><?php echo isset($page_title) ? $page_title : "Gestion Bokk Yakaar"; ?></h1>';?>
                            <!--Debut principal conteneur -->
-                                <main class="content-wrapper">
+                                <main class="content-wrapper bg-white">

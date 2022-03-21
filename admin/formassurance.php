@@ -4,7 +4,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter / Modifier un membre <i class="fa fa-user-circle-o"
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter / Modifier une assurance <i class="fa fa-user-circle-o"
             aria-hidden="true"></i></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -15,7 +15,7 @@
           <div class="container-fluid">
             <div class="row">
               <div class="form-group col-md-6">
-                  <label for="recipient-name" class="col-form-label">Prenom:</label>
+                  <label for="recipient-name" class="col-form-label">Identifiant Membre:</label>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
@@ -110,8 +110,8 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
           <button type="submit" class="btn btn-success" id="addButton">Envoyer</button>
-          <input type="hidden" name="action" value="adduser">
-          <input type="hidden" name="id" id="id" value="">
+          <input type="hidden" name="action" value="addassurance">
+          <input type="hidden" name="id_assurance" id="id_assurance" value="">
         </div>
       </form>
     </div>

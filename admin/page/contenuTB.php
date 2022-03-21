@@ -1,3 +1,20 @@
+    <!-- Script de connexion à la base de donnée  -->
+        <?php 
+            define('DB_HOST','localhost');
+            define('DB_USER','root');
+            define('DB_PASS','');
+            define('DB_NAME','bokk_yakaar_bd');
+            // Établir une connexion à la base de données.
+            try
+            {
+            $conn = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+            }
+            catch (PDOException $e)
+            {
+            exit("Error: " . $e->getMessage());
+            }
+        ?>
+    <!-- Script de connexion à la base de donnée  -->
 <!--Debut Contenu Tableau de bord -->
     <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner">
@@ -30,10 +47,6 @@
                                     echo "</div>";
                                 }
                                                             
-                                echo "<div class='mdc-button text-button--info mdc-ripple-upgraded'>";
-                                    echo "Le contenu de votre section administrative sera ici.";
-                                echo "</div>";
-                                echo'</h3>';
                             ?>
                         <!--Script PHP pour afficher les alertes et autres infos -->
                     </div>
@@ -42,11 +55,20 @@
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
                 <div class="mdc-card info-card info-card--success">
                     <div class="card-inner">
-                        <h5 class="card-title">Emprunté</h5>
+                        <!-- Script PHP pour recupérer le total des membres -->
+                            <?php 
+                                $sql ="SELECT id from utilisateurs ";
+                                $query = $conn -> prepare($sql);
+                                $query->execute();
+                                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                $membres=$query->rowCount();
+                            ?>
+                        <!-- Script PHP pour recupérer le total des membres -->
+                        <h5 class="card-title">Total des Membres</h5>
                         <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
-                        <p class="tx-12 text-muted"></p>
+                        <h1 class="text-muted text-center"><?php echo htmlentities($membres);?></h1>
                         <div class="card-icon-wrapper">
-                            <i class="material-icons">dvr</i>
+                            <i class="material-icons">list</i>
                         </div>
                     </div>
                 </div>
@@ -54,11 +76,12 @@
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
                 <div class="mdc-card info-card info-card--danger">
                     <div class="card-inner">
+                        
                         <h5 class="card-title">Bénéfice annuel</h5>
                         <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
                         <p class="tx-12 text-muted"></p>
                         <div class="card-icon-wrapper">
-                            <i class="material-icons">attach_money</i>
+                        <i class="fcfa-icon fcfa-3x"></i>
                         </div>
                     </div>
                 </div>
@@ -66,11 +89,20 @@
             <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-4-tablet">
                 <div class="mdc-card info-card info-card--primary">
                     <div class="card-inner">
-                        <h5 class="card-title">Conversion de plomb</h5>
+                        <!-- Script PHP pour recupérer le total des membres -->
+                        <?php 
+                                $sql ="SELECT id_assurance FROM assurance WHERE id_utilisateur";
+                                $query = $conn -> prepare($sql);
+                                $query->execute();
+                                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                $assurance=$query->rowCount();
+                            ?>
+                        <!-- Script PHP pour recupérer le total des membres -->
+                        <h5 class="card-title">Membres Assurés</h5>
                         <h5 class="font-weight-light pb-2 mb-1 border-bottom"></h5>
-                        <p class="tx-12 text-muted"></p>
+                        <h1 class="text-muted text-center"><?php echo htmlentities($assurance);?></h1>
                         <div class="card-icon-wrapper">
-                            <i class="material-icons">trending_up</i>
+                            <i class="material-icons">directions_car</i>
                         </div>
                     </div>
                 </div>

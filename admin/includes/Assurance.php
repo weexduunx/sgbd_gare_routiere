@@ -1,13 +1,13 @@
 <?php
 include_once 'Database.php';
 
-class Player extends Database
+class Assurance extends Database
 {
     // nom de la table
-    protected $tableName = 'utilisateurs';
+    protected $tableName = 'assurance';
 
     /**
-     * La fonction est utilisée pour ajouter un enregistrement
+     * La fonction est utilisée pour ajouter une assurance
      * @param array $data
      * @return int $lastInsertedId
      */
@@ -51,11 +51,11 @@ class Player extends Database
                 $x++;
             }
         }
-        $sql = "UPDATE {$this->tableName} SET {$fileds} WHERE id=:id";
+        $sql = "UPDATE {$this->tableName} SET {$fileds} WHERE id_assurance=:id_assurance";
         $stmt = $this->conn->prepare($sql);
         try {
             $this->conn->beginTransaction();
-            $data['id'] = $id;
+            $data['id_assurance'] = $id;
             $stmt->execute($data);
             $this->conn->commit();
         } catch (PDOException $e) {
@@ -74,7 +74,9 @@ class Player extends Database
 
     public function getRows($start = 0, $limit = 5)
     {
-        $sql = "SELECT * FROM {$this->tableName} ORDER BY id DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT id_utilisateur, type_assurance,montant_assurance,debut_assurance,fin_assurance,
+        DATEDIFF (`fin_assurance` , `debut_assurance` ) as duree_assurance  
+        FROM {$this->tableName} ORDER BY id_assurance DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -89,10 +91,10 @@ class Player extends Database
     // Supprimer la ligne avec ID
     public function deleteRow($id)
     {
-        $sql = "DELETE FROM {$this->tableName}  WHERE id=:id";
+        $sql = "DELETE FROM {$this->tableName}  WHERE id_assurance=:id_assurance";
         $stmt = $this->conn->prepare($sql);
         try {
-            $stmt->execute([':id' => $id]);
+            $stmt->execute([':id_assurance' => $id]);
             if ($stmt->rowCount() > 0) {
                 return true;
             }
@@ -132,9 +134,9 @@ class Player extends Database
         return $result;
     }
 
-    public function searchPlayer($searchText, $start = 0, $limit = 4)
+    public function recherche($searchText, $start = 0, $limit = 4)
     {
-        $sql = "SELECT * FROM {$this->tableName} WHERE nom LIKE :search ORDER BY id DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT * FROM {$this->tableName} WHERE type_assurance LIKE :search ORDER BY id_assurance DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':search' => "{$searchText}%"]);
         if ($stmt->rowCount() > 0) {
@@ -144,32 +146,6 @@ class Player extends Database
         }
 
         return $results;
-    }
-    /**
-     * la fonction est utilisée pour télécharger le fichier
-     * @param array $file
-     * @return string $newFileName
-     */
-    public function uploadPhoto($file)
-    {
-        if (!empty($file)) {
-            $fileTempPath = $file['tmp_name'];
-            $fileName = $file['name'];
-            $fileSize = $file['size'];
-            $fileType = $file['type'];
-            $fileNameCmps = explode('.', $fileName);
-            $fileExtension = strtolower(end($fileNameCmps));
-            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-            $allowedExtn = ["jpg", "png", "gif", "jpeg"];
-            if (in_array($fileExtension, $allowedExtn)) {
-                $uploadFileDir = getcwd() . '/uploads/';
-                $destFilePath = $uploadFileDir . $newFileName;
-                if (move_uploaded_file($fileTempPath, $destFilePath)) {
-                    return $newFileName;
-                }
-            }
-
-        }
     }
 
 }

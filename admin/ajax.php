@@ -13,9 +13,11 @@ if ($action == 'adduser' && !empty($_POST)) {
     $tel = $_POST['tel'];
     $photo = $_FILES['photo'];
     $adresse = $_POST['adresse'];
+    $numpermis = $_POST['numpermis'];
+    $cin = $_POST['cin'];
     $playerId = (!empty($_POST['id'])) ? $_POST['id'] : '';
 
-    // Fichier (photo) Télécharger
+    // Téléchargement du photo
     $imagename = '';
     if (!empty($photo['name'])) {
         $imagename = $obj->uploadPhoto($photo);
@@ -25,6 +27,8 @@ if ($action == 'adduser' && !empty($_POST)) {
             'email' => $email,
             'tel' => $tel,
             'adresse' => $adresse,
+            'numpermis' => $numpermis,
+            'cin' => $cin,
             'photo' => $imagename,
         ];
     } else {
@@ -33,6 +37,9 @@ if ($action == 'adduser' && !empty($_POST)) {
             'nom' => $nom,
             'email' => $email,
             'tel' => $tel,
+            'adresse' => $adresse,
+            'numpermis' => $numpermis,
+            'cin' => $cin,
             
         ];
     }

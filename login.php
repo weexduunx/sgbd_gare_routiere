@@ -41,6 +41,7 @@ if($_POST){
         $_SESSION['prenom'] = htmlspecialchars($utilisateur->prenom, ENT_QUOTES, 'UTF-8') ;
         $_SESSION['nom'] = $utilisateur->nom;
         $_SESSION['email'] = $utilisateur->email;
+        $_SESSION['photo'] = $utilisateur->photo;
     
         // Si le niveau d'accès est «admin», rediriger vers la section administrative
         if($utilisateur->niveau_dacces=='Admin'){
