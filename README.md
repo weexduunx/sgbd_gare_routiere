@@ -3,7 +3,6 @@
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)]() 
 [![forthebadge](https://github.com/weexduunx/sgbd_gare_routiere/blob/b050f7c97beb33ee0571cda5579c2020504fc384/images/powered-by-digital-spirit-sn.svg)](https://www.linkedin.com/in/idrissa-ndiouck-82a426155/)
 [![forthebadge](https://forthebadge.com/images/badges/validated-html5.svg)]()
-[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)]()
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)]()
 [![forthebadge](https://forthebadge.com/images/badges/fixed-bugs.svg)]()
 
