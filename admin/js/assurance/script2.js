@@ -22,53 +22,54 @@ function pagination(totalpages, currentpage) {
     $("#pagination").html(pagelist);
 }
 
-// Obtenir la ligne des utilisateurs
-function getplayerrow(player) {
-    var playerRow = "";
-    if (player) {
-        const userphoto = player.photo ? player.photo : "default.png";
-        playerRow = `<tr>
+// Obtenir la ligne des assurance
+function getassurancerow(assurance) {
+    var assuranceRow = "";
+    if (assurance) {
+        const userphoto = assurance.photo ? assurance.photo : "default.png";
+        assuranceRow = `<tr>
           <td class="align-middle"><img src="uploads/${userphoto}" class="img-thumbnail rounded float-left"></td>
-          <td class="align-middle">${player.prenom}</td>
-          <td class="align-middle">${player.nom}</td>
-          <td class="align-middle">${player.email}</td>
-          <td class="align-middle">${player.tel}</td>
-          <td class="align-middle">${player.numpermis}</td>
-          <td class="align-middle">${player.cin}</td>
-          <td class="align-middle">${player.adresse}</td>
+          <td class="align-middle">${assurance.prenom}</td>
+          <td class="align-middle">${assurance.nom}</td>
+          <td class="align-middle">${assurance.matricule}</td>
+          <td class="align-middle">${assurance.categorie}</td>
+          <td class="align-middle">${assurance.marque}</td>
+          <td class="align-middle">${assurance.type_assurance}</td>
+          <td class="align-middle">${assurance.montant_assurance}</td>
+          <td class="align-middle">${assurance.debut_assurance}</td>
+          <td class="align-middle">${assurance.fin_assurance}</td>
+          <td class="align-middle">${assurance.duree_assurance} Jours</td>
           <td class="align-middle">
-            <a href="#" class="btn btn-success mr-3 profile" data-toggle="modal" data-target="#userViewModal"
-              title="Profile" data-id="${player.id}"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
-            <a href="#" class="btn btn-warning mr-3 edituser" data-toggle="modal" data-target="#userModal"
-              title="Edit" data-id="${player.id}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-            <a href="#" class="btn btn-danger deleteuser" data-userid="14" title="delete" data-id="${player.id}"><i
+            <a href="#" class="btn btn-warning mr-3 editer" data-toggle="modal" data-target="#assuranceModal"
+              title="Modifier" data-id="${assurance.id_assurance}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+            <a href="#" class="btn btn-danger supprimer" data-userid="14" title="Supprimer" data-id="${assurance.id_assurance}"><i
                 class="fa fa-trash-o fa-lg"></i></a>
           </td>
         </tr>`;
     }
-    return playerRow;
+    return assuranceRow;
 }
-// Obtenir la liste des membres
-function getplayers() {
+// Obtenir la liste des assurances
+function getassurances() {
     var pageno = $("#currentpage").val();
     $.ajax({
-        url: "ajax.php",
+        url: "ajax_assurance.php",
         type: "GET",
         dataType: "json",
-        data: { page: pageno, action: "getusers" },
+        data: { page: pageno, action: "getassurances" },
         beforeSend: function() {
             $("#overlay").fadeIn();
         },
         success: function(rows) {
             console.log(rows);
-            if (rows.players) {
-                var playerslist = "";
-                $.each(rows.players, function(index, player) {
-                    playerslist += getplayerrow(player);
+            if (rows.assurances) {
+                var assuranceslist = "";
+                $.each(rows.assurances, function(index, assurance) {
+                    assuranceslist += getassurancerow(assurance);
                 });
-                $("#userstable tbody").html(playerslist);
-                let totalPlayers = rows.count;
-                let totalpages = Math.ceil(parseInt(totalPlayers) / 4);
+                $("#assurancetable tbody").html(assuranceslist);
+                let totalAssurances = rows.count;
+                let totalpages = Math.ceil(parseInt(totalAssurances) / 4);
                 const currentpage = $("#currentpage").val();
                 pagination(totalpages, currentpage);
                 $("#overlay").fadeOut();
@@ -81,15 +82,17 @@ function getplayers() {
 }
 
 $(document).ready(function() {
-    // Ajouter / Modifier l'utilisateur
-    $(document).on("submit", "#addform", function(event) {
+    // Ajouter / Modifier une assurance
+    
+    $(document).on("submit", "#ajoutform", function(event) {
         event.preventDefault();
+        
         var alertmsg =
-            $("#id").val().length > 0 ?
+            $("#id_assurance").val().length > 0 ?
             "Les informations ont été mises à jour avec succès!" :
-            "Le nouveau membre ajouté avec succès!";
+            "assurance ajouté avec succès!";
         $.ajax({
-            url: "ajax.php",
+            url: "ajax_assurance.php",
             type: "POST",
             dataType: "json",
             data: new FormData(this),
@@ -101,10 +104,10 @@ $(document).ready(function() {
             success: function(response) {
                 console.log(response);
                 if (response) {
-                    $("#userModal").modal("hide");
-                    $("#addform")[0].reset();
+                    $("#assuranceModal").modal("hide");
+                    $("#ajoutform")[0].reset();
                     $(".message").html(alertmsg).fadeIn().delay(3000).fadeOut();
-                    getplayers();
+                    getassurances();
                     $("#overlay").fadeOut();
                 }
             },
@@ -119,36 +122,39 @@ $(document).ready(function() {
         var $this = $(this);
         const pagenum = $this.data("page");
         $("#currentpage").val(pagenum);
-        getplayers();
+        getassurances();
         $this.parent().siblings().removeClass("active");
         $this.parent().addClass("active");
     });
     // Formulaire de réinitialisation sur le nouveau bouton
     $("#addnewbtn").on("click", function() {
-        $("#addform")[0].reset();
-        $("#id").val("");
+        $("#ajoutform")[0].reset();
+        $("#id_assurance").val("");
     });
 
-    //  obtenir un utilisateur
-    $(document).on("click", "a.edituser", function() {
+    //  obtenir une assurance
+    $(document).on("click", "a.editer", function() {
         var pid = $(this).data("id");
 
         $.ajax({
-            url: "ajax.php",
+            url: "ajax_assurance.php",
             type: "GET",
             dataType: "json",
-            data: { id: pid, action: "getuser" },
+            data: { id_assurance: pid, action: "getassurance" },
             beforeSend: function() {
                 $("#overlay").fadeIn();
             },
-            success: function(player) {
-                if (player) {
-                    $("#prenom").val(player.prenom);
-                    $("#nom").val(player.nom);
-                    $("#email").val(player.email);
-                    $("#tel").val(player.tel);
-                    $("#adresse").val(player.adresse);
-                    $("#id").val(player.id);
+            success: function(assurance) {
+                if (assurance) {
+                    $("#selMembre").val(assurance.membre);
+                    $("#matricule").val(assurance.matricule);
+                    $("#categorie").val(assurance.categorie);
+                    $("#marque").val(assurance.marque);
+                    $("#type").val(assurance.type_assurance);
+                    $("#montant").val(assurance.montant_assurance);
+                    $("#debut").val(assurance.debut_assurance);
+                    $("#fin").val(assurance.fin_assurance);
+                    $("#id").val(assurance.id);
                 }
                 $("#overlay").fadeOut();
             },
@@ -158,27 +164,27 @@ $(document).ready(function() {
         });
     });
 
-    // Supprimer l'utilisateur
-    $(document).on("click", "a.deleteuser", function(e) {
+    // Supprimer une assurance
+    $(document).on("click", "a.supprimer", function(e) {
         e.preventDefault();
         var pid = $(this).data("id");
         if (confirm("Êtes-vous sûr de vouloir supprimer l'information?")) {
             $.ajax({
-                url: "ajax.php",
+                url: "ajax_assurance.php",
                 type: "GET",
                 dataType: "json",
-                data: { id: pid, action: "deleteuser" },
+                data: { id_assurance: pid, action: "deleteuser" },
                 beforeSend: function() {
                     $("#overlay").fadeIn();
                 },
                 success: function(res) {
                     if (res.deleted == 1) {
                         $(".message")
-                            .html("Le Membre a été supprimé avec succès!")
+                            .html("L'assurance a été supprimée avec succès!")
                             .fadeIn()
                             .delay(3000)
                             .fadeOut();
-                        getplayers();
+                        getassurances();
                         $("#overlay").fadeOut();
                     }
                 },
@@ -189,58 +195,22 @@ $(document).ready(function() {
         }
     });
 
-    // Recevoir le profil
-    $(document).on("click", "a.profile", function() {
-        var pid = $(this).data("id");
-        $.ajax({
-            url: "ajax.php",
-            type: "GET",
-            dataType: "json",
-            data: { id: pid, action: "getuser" },
-            success: function(player) {
-                if (player) {
-                    const userphoto = player.photo ? player.photo : "default.png";
-                    const profile = `<div class="row">
-                <div class="col-sm-6 col-md-4">
-                  <img src="uploads/${userphoto}" class="rounded responsive" />
-                </div>
-                <div class="col-sm-6 col-md-8">
-                  <h4 class="text-primary">${player.prenom}</h4>
-                  <h4 class="text-primary">${player.nom}</h4>
-                  <p class="text">
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
-                    <br />
-                    <i class="fa fa-phone" aria-hidden="true"></i> ${player.tel}
-                    <br />
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> ${player.adresse}
-                  </p>
-                </div>
-              </div>`;
-                    $("#profile").html(profile);
-                }
-            },
-            error: function() {
-                console.log("Quelque chose a mal tourné");
-            },
-        });
-    });
-
    // recherche
     $("#searchinput").on("keyup", function() {
         const searchText = $(this).val();
         if (searchText.length > 1) {
             $.ajax({
-                url: "ajax.php",
+                url: "ajax_assurance.php",
                 type: "GET",
                 dataType: "json",
                 data: { searchQuery: searchText, action: "search" },
-                success: function(players) {
-                    if (players) {
-                        var playerslist = "";
-                        $.each(players, function(index, player) {
-                            playerslist += getplayerrow(player);
+                success: function(assurances) {
+                    if (assurances) {
+                        var assuranceslist = "";
+                        $.each(assurances, function(index, assurance) {
+                            assuranceslist += getassurancerow(assurance);
                         });
-                        $("#userstable tbody").html(playerslist);
+                        $("#assurancetable tbody").html(assuranceslist);
                         $("#pagination").hide();
                     }
                 },
@@ -249,10 +219,10 @@ $(document).ready(function() {
                 },
             });
         } else {
-            getplayers();
+            getassurances();
             $("#pagination").show();
         }
     });
     // charger les utilisateurs
-    getplayers();
+    getassurances();
 });

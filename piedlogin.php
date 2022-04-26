@@ -9,6 +9,10 @@
                             (c)<?php echo date("Y"); ?>
                             NGTS SARL - DEPARTEMENT INFORMATIQUE 
                         </p>
+                        <p class="text-center mdc-typography mdc-theme--dark">
+                         Développer par 
+                            <a href="mailto:indiouck04@yahoo.fr" style="color:green;">Idrissa Ndiouck</a>
+                        </p> 
                     </div>
 </main>
 </div>

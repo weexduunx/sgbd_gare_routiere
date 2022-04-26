@@ -26,9 +26,9 @@ if ($action == 'adduser' && !empty($_POST)) {
             'nom' => $nom,
             'email' => $email,
             'tel' => $tel,
-            'adresse' => $adresse,
-            'numpermis' => $numpermis,
             'cin' => $cin,
+            'numpermis' => $numpermis,
+            'adresse' => $adresse,
             'photo' => $imagename,
         ];
     } else {
@@ -37,9 +37,10 @@ if ($action == 'adduser' && !empty($_POST)) {
             'nom' => $nom,
             'email' => $email,
             'tel' => $tel,
-            'adresse' => $adresse,
-            'numpermis' => $numpermis,
             'cin' => $cin,
+            'numpermis' => $numpermis,
+            'adresse' => $adresse,           
+            'photo' => $imagename,
             
         ];
     }

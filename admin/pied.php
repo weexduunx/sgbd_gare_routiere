@@ -5,7 +5,11 @@
         <div class="mdc-layout-grid ">
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-6-desktop">
-                    <span class="text-center text-sm-left d-block d-sm-inline-block tx-14">Copyright © <a href="" target="_blank">NGTS - DEPARTEMENT INFORMATIQUE </a><?php echo date("Y"); ?></span>
+                    <span class="text-center text-sm-left d-block d-sm-inline-block tx-14">
+                        Copyright © <a href="" target="_blank"></a><?php echo date("Y"); ?> 
+                        NGTS - DEPARTEMENT INFORMATIQUE - Développer par 
+                        <a href="mailto:indiouck04@yahoo.fr" style="color:green;">Idrissa Ndiouck</a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -21,8 +25,8 @@
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-            <script src="js/script.js"></script>
-            <script src="js/script2.js"></script>
+            <script src="js/membre/script.js"></script>
+            <script src="js/assurance/script2.js"></script>
         <!-- JS, Popper.js, and jQuery -->
 
         <!-- tableau de bord js -->

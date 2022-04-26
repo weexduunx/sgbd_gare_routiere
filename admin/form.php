@@ -10,7 +10,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form id="addform" method="POST" enctype="multipart/form-data">
+      <form id="ajoutModif" method="POST" enctype="multipart/form-data">
         <div class="modal-body">
           <div class="container-fluid">
             <div class="row">

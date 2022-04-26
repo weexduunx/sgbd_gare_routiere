@@ -13,6 +13,8 @@ class Utilisateur{
     public $nom;
     public $email;
     public $tel;
+    public $cin;
+    public $numpermis;
     public $adresse;
     public $password;
     public $niveau_dacces;
@@ -31,7 +33,15 @@ class Utilisateur{
     function emailExists(){
     
         // requête pour vérifier si un email existe
-        $query = "SELECT id, prenom, nom, tel, photo,  niveau_dacces, password, status
+        $query = "SELECT 
+                    id, 
+                    prenom, 
+                    nom, 
+                    tel, 
+                    photo, 
+                    niveau_dacces, 
+                    password, 
+                    status
                 FROM " . $this->table_name . "
                 WHERE email = ?
                 LIMIT 0,1";
@@ -62,6 +72,8 @@ class Utilisateur{
             $this->prenom = $row['prenom'];
             $this->nom = $row['nom'];
             $this->tel = $row['tel'];
+            $this->cin = $row['cin'];
+            $this->numpermis = $row['numpermis'];
             $this->photo = $row['photo'];
             $this->niveau_dacces = $row['niveau_dacces'];
             $this->password = $row['password'];
@@ -89,6 +101,8 @@ class Utilisateur{
                         nom = :nom,
                         email = :email,
                         tel = :tel,
+                        cin = :cin,
+                        numpermis = :numpermis,
                         adresse = :adresse,
                         password = :password,
                         niveau_dacces = :niveau_dacces,
@@ -103,6 +117,8 @@ class Utilisateur{
             $this->nom=htmlspecialchars(strip_tags($this->nom));
             $this->email=htmlspecialchars(strip_tags($this->email));
             $this->tel=htmlspecialchars(strip_tags($this->tel));
+            $this->cin=htmlspecialchars(strip_tags($this->cin));
+            $this->numpermis=htmlspecialchars(strip_tags($this->numpermis));
             $this->adresse=htmlspecialchars(strip_tags($this->adresse));
             $this->password=htmlspecialchars(strip_tags($this->password));
             $this->niveau_dacces=htmlspecialchars(strip_tags($this->niveau_dacces));
@@ -113,6 +129,8 @@ class Utilisateur{
             $stmt->bindParam(':nom', $this->nom);
             $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':tel', $this->tel);
+            $stmt->bindParam(':cin', $this->cin);
+            $stmt->bindParam(':numpermis', $this->numpermis);
             $stmt->bindParam(':adresse', $this->adresse);
         
             // hachage le mot de passe avant d'économiser sur la base de données
@@ -149,6 +167,8 @@ class Utilisateur{
                         nom,
                         email,
                         tel,
+                        cin,
+                        numpermis,
                         niveau_dacces,
                         created
                     FROM " . $this->table_name . "
@@ -181,10 +201,8 @@ class Utilisateur{
             // exécuter l'ordre
             $stmt->execute();
         
-            // Obtenir le nombre de lignes
-            $num = $stmt->rowCount();
-        
             // retourne le nombre de ligne
-            return $num;
+            return  $stmt->rowCount();
+
         }
 }

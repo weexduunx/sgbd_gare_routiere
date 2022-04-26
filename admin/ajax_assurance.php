@@ -7,12 +7,14 @@
     }
 
     if ($action == 'addassurance' && !empty($_POST)) {
-        $id_utilisateur = $_POST['id_utilisateur'];
-        $type_assurance = $_POST['type_assurance'];
-        $montant_assurance = $_POST['montant_assurance'];
-        $debut_assurance = $_POST['debut_assurance'];
-        $fin_assurance = $_POST['fin_assurance'];
-        $duree_assurance = $_POST['duree_assurance'];
+        $membre = $_POST['id_utilisateur'];
+        $categorie = $_POST['categorie'];
+        $matricule = $_POST['matricule'];
+        $marque = $_POST['marque'];
+        $type = $_POST['assurancetype'];
+        $montant_assurance = $_POST['montant'];
+        $debut_assurance = $_POST['datedebut'];
+        $fin_assurance = $_POST['datefin'];
         $photo_assurance = $_FILES['photo_assurance'];
         $assuranceId = (!empty($_POST['id_assurance'])) ? $_POST['id_assurance'] : '';
 
@@ -21,22 +23,28 @@
         if (!empty($photo['name'])) {
             $imagename = $obj->uploadPhoto($photo);
             $assuranceData = [
-                'id_utilisateur' => $id_utilisateur,
-                'type_assurance' => $type_assurance,
-                'montant_assurance' => $montant_assurance,
-                'debut_assurance' => $debut_assurance,
-                'fin_assurance' => $fin_assurance,
-                'duree_assurance' => $duree_assurance,
+                'id_utilisateur' => $membre,
+                'categorie' => $categorie,
+                'matricule' => $matricule,
+                'marque' => $marque,
+                'assurancetype' => $type,
+                'montant' => $montant_assurance,
+                'datedebut' => $debut_assurance,
+                'datefin' => $fin_assurance,
                 'photo_assurance' => $imagename,
             ];
         } else {
             $assuranceData = [
-                'id_utilisateur' => $id_utilisateur,
-                'type_assurance' => $type_assurance,
-                'montant_assurance' => $montant_assurance,
-                'debut_assurance' => $debut_assurance,
-                'fin_assurance' => $fin_assurance,
-                'duree_assurance' => $duree_assurance,
+                'selMembre' => $membre,
+                'categorie' => $categorie,
+                'matricule' => $matricule,
+                'marque' => $marque,
+                'assurancetype' => $type, 
+                'montant' => $montant_assurance,
+                'datedebut' => $debut_assurance,
+                'datefin' => $fin_assurance,
+                'photo_assurance' => $imagename,
+
                 
             ];
         }
@@ -76,6 +84,15 @@
         if (!empty($assuranceId)) {
             $assurance = $obj->getRow('id_assurance', $assuranceId);
             echo json_encode($assurance);
+            exit();
+        }
+    }
+
+    if ($action == "getmembres") {
+        $utilisateurId = (!empty($_GET['id'])) ? $_GET['id'] : '';
+        if (!empty($utilisateurId)) {
+            $membre = $obj->getMembre('id', $utilisateurId);
+            echo json_encode($membre);
             exit();
         }
     }

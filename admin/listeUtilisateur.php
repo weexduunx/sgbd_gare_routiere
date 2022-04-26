@@ -6,15 +6,15 @@
     include_once "verifconnex.php";
    
     // inclure des classes et des objets
-    include_once '../configuration/bd.php';
-    include_once '../objets/utilisateur.php';
+    // include_once '../configuration/bd.php';
+    // include_once '../objets/utilisateur.php';
     
-    // Obtenir la connexion de base de données
-    $basededonnee = new Basededonnee();
-    $db = $basededonnee->connectBD();
+    // // Obtenir la connexion de base de données
+    // $basededonnee = new Basededonnee();
+    // $db = $basededonnee->connectBD();
    
-    //initialiser les objets
-    $utilisateur = new Utilisateur($db);
+    // //initialiser les objets
+    // $utilisateur = new Utilisateur($db);
     
     // Définir le titre de la page
     $page_title = "Liste des Membres";

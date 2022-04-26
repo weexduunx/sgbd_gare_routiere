@@ -3,8 +3,12 @@
 <table class="table table-hoverable " id="assurancetable">
   <thead>
     <tr>
-      <th>#</th>
-      <th>ID Membre</th>
+      <th>Photo</th>
+      <th>Prenom</th>
+      <th>Nom</th>
+      <th>Matricule</th>
+      <th>Catégorie</th>
+      <th>Marque</th>
       <th>Type Assurance</th>
       <th>Montant Assurance</th>
       <th>Debut Assurance</th>

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  sgbdgareroutiere1:
+    image: sgbd_gare_routiere-1
+    build:
+      context: .
+      dockerfile: ./Dockerfile

@@ -69,21 +69,19 @@
                             <i class="mdc-drawer-arrow material-icons">chevron_right</i>
                         </a>
                         <div class="mdc-expansion-panel" id="sous_menu1">
-                            <nav class="mdc-list mdc-drawer-submenu">
-                                <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
-                                        add_circle
-                                        </i>
-                                        Ajouter
-                                    </a>
-                                </div>
+                            <nav aria-label="adminMenu" class="mdc-list mdc-drawer-submenu">
                                 <div class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="listeAssurance.php">
                                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
                                             list
                                         </i>
                                         liste
+                                    </a>
+                                    <a class="mdc-drawer-link" href="ajoutAssurance.php" >
+                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon "   aria-hidden="true">
+                                            add
+                                        </i>
+                                        Ajouter
                                     </a>
                                 </div>
                             </nav>
@@ -103,7 +101,6 @@
                 </nav>
                 </div>
                     <div class="profile-actions">
-                        <!-- <a href="javascript:;">Paramétres</a> -->
                         <span class="divider"></span>
                         <a href="<?php echo $home_url; ?>deconnexion.php">Se déconnecter</a>
                     </div> 

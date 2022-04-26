@@ -22,52 +22,53 @@ function pagination(totalpages, currentpage) {
     $("#pagination").html(pagelist);
 }
 
-// Obtenir la ligne des assurance
-function getassurancerow(assurance) {
-    var assuranceRow = "";
-    if (assurance) {
-        const userphoto = assurance.photo ? assurance.photo : "default.png";
-        assuranceRow = `<tr>
+// Obtenir la ligne des utilisateurs
+function getplayerrow(player) {
+    var playerRow = "";
+    if (player) {
+        const userphoto = player.photo ? player.photo : "default.png";
+        playerRow = `<tr>
           <td class="align-middle"><img src="uploads/${userphoto}" class="img-thumbnail rounded float-left"></td>
-          <td class="align-middle">${assurance.id_utilisateur}</td>
-          <td class="align-middle">${assurance.type_assurance}</td>
-          <td class="align-middle">${assurance.montant_assurance}</td>
-          <td class="align-middle">${assurance.debut_assurance}</td>
-          <td class="align-middle">${assurance.fin_assurance}</td>
-          <td class="align-middle">${assurance.duree_assurance}</td>
+          <td class="align-middle">${player.prenom}</td>
+          <td class="align-middle">${player.nom}</td>
+          <td class="align-middle">${player.email}</td>
+          <td class="align-middle">${player.tel}</td>
+          <td class="align-middle">${player.numpermis}</td>
+          <td class="align-middle">${player.cin}</td>
+          <td class="align-middle">${player.adresse}</td>
           <td class="align-middle">
             <a href="#" class="btn btn-success mr-3 profile" data-toggle="modal" data-target="#userViewModal"
-              title="Profile" data-id="${assurance.id_assurance}"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
+              title="Profile" data-id="${player.id}"><i class="fa fa-address-card-o" aria-hidden="true"></i></a>
             <a href="#" class="btn btn-warning mr-3 edituser" data-toggle="modal" data-target="#userModal"
-              title="Edit" data-id="${assurance.id_assurance}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-            <a href="#" class="btn btn-danger deleteuser" data-userid="14" title="delete" data-id="${assurance.id_utilisateur}"><i
+              title="Edit" data-id="${player.id}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+            <a href="#" class="btn btn-danger deleteuser" data-userid="14" title="delete" data-id="${player.id}"><i
                 class="fa fa-trash-o fa-lg"></i></a>
           </td>
         </tr>`;
     }
-    return assuranceRow;
+    return playerRow;
 }
-// Obtenir la liste des assurances
-function getassurances() {
+// Obtenir la liste des membres
+function getplayers() {
     var pageno = $("#currentpage").val();
     $.ajax({
-        url: "ajax_assurance.php",
+        url: "ajax.php",
         type: "GET",
         dataType: "json",
-        data: { page: pageno, action: "getassurances" },
+        data: { page: pageno, action: "getusers" },
         beforeSend: function() {
             $("#overlay").fadeIn();
         },
         success: function(rows) {
             console.log(rows);
-            if (rows.assurances) {
-                var assuranceslist = "";
-                $.each(rows.assurances, function(index, assurance) {
-                    assuranceslist += getassurancerow(assurance);
+            if (rows.players) {
+                var playerslist = "";
+                $.each(rows.players, function(index, player) {
+                    playerslist += getplayerrow(player);
                 });
-                $("#assurancetable tbody").html(assuranceslist);
-                let totalAssurances = rows.count;
-                let totalpages = Math.ceil(parseInt(totalAssurances) / 4);
+                $("#userstable tbody").html(playerslist);
+                let totalPlayers = rows.count;
+                let totalpages = Math.ceil(parseInt(totalPlayers) / 4);
                 const currentpage = $("#currentpage").val();
                 pagination(totalpages, currentpage);
                 $("#overlay").fadeOut();
@@ -81,14 +82,14 @@ function getassurances() {
 
 $(document).ready(function() {
     // Ajouter / Modifier l'utilisateur
-    $(document).on("submit", "#addform", function(event) {
+    $(document).on("submit", "#ajoutModif", function(event) {
         event.preventDefault();
         var alertmsg =
             $("#id").val().length > 0 ?
             "Les informations ont été mises à jour avec succès!" :
-            "assurance ajouté avec succès!";
+            "Le nouveau membre ajouté avec succès!";
         $.ajax({
-            url: "ajax_assurance.php",
+            url: "ajax.php",
             type: "POST",
             dataType: "json",
             data: new FormData(this),
@@ -101,9 +102,9 @@ $(document).ready(function() {
                 console.log(response);
                 if (response) {
                     $("#userModal").modal("hide");
-                    $("#addform")[0].reset();
+                    $("#ajoutModif")[0].reset();
                     $(".message").html(alertmsg).fadeIn().delay(3000).fadeOut();
-                    getassurances();
+                    getplayers();
                     $("#overlay").fadeOut();
                 }
             },
@@ -118,14 +119,14 @@ $(document).ready(function() {
         var $this = $(this);
         const pagenum = $this.data("page");
         $("#currentpage").val(pagenum);
-        getassurances();
+        getplayers();
         $this.parent().siblings().removeClass("active");
         $this.parent().addClass("active");
     });
     // Formulaire de réinitialisation sur le nouveau bouton
     $("#addnewbtn").on("click", function() {
         $("#addform")[0].reset();
-        $("#id_utilisateur").val("");
+        $("#id").val("");
     });
 
     //  obtenir un utilisateur
@@ -133,19 +134,21 @@ $(document).ready(function() {
         var pid = $(this).data("id");
 
         $.ajax({
-            url: "ajax_assurance.php",
+            url: "ajax.php",
             type: "GET",
             dataType: "json",
-            data: { id_assurance: pid, action: "getassurance" },
+            data: { id: pid, action: "getuser" },
             beforeSend: function() {
                 $("#overlay").fadeIn();
             },
             success: function(player) {
-                if (assurance) {
+                if (player) {
                     $("#prenom").val(player.prenom);
                     $("#nom").val(player.nom);
                     $("#email").val(player.email);
                     $("#tel").val(player.tel);
+                    $("#numpermis").val(player.numpermis);
+                    $("#cin").val(player.cin);
                     $("#adresse").val(player.adresse);
                     $("#id").val(player.id);
                 }
@@ -163,21 +166,21 @@ $(document).ready(function() {
         var pid = $(this).data("id");
         if (confirm("Êtes-vous sûr de vouloir supprimer l'information?")) {
             $.ajax({
-                url: "ajax_assurance.php",
+                url: "ajax.php",
                 type: "GET",
                 dataType: "json",
-                data: { id_assurance: pid, action: "deleteuser" },
+                data: { id: pid, action: "deleteuser" },
                 beforeSend: function() {
                     $("#overlay").fadeIn();
                 },
                 success: function(res) {
                     if (res.deleted == 1) {
                         $(".message")
-                            .html("L'assurance a été supprimée avec succès!")
+                            .html("Le Membre a été supprimé avec succès!")
                             .fadeIn()
                             .delay(3000)
                             .fadeOut();
-                        getassurances();
+                        getplayers();
                         $("#overlay").fadeOut();
                     }
                 },
@@ -189,57 +192,61 @@ $(document).ready(function() {
     });
 
     // Recevoir le profil
-    // $(document).on("click", "a.profile", function() {
-    //     var pid = $(this).data("id");
-    //     $.ajax({
-    //         url: "ajax.php",
-    //         type: "GET",
-    //         dataType: "json",
-    //         data: { id: pid, action: "getuser" },
-    //         success: function(player) {
-    //             if (player) {
-    //                 const userphoto = player.photo ? player.photo : "default.png";
-    //                 const profile = `<div class="row">
-    //             <div class="col-sm-6 col-md-4">
-    //               <img src="uploads/${userphoto}" class="rounded responsive" />
-    //             </div>
-    //             <div class="col-sm-6 col-md-8">
-    //               <h4 class="text-primary">${player.prenom}</h4>
-    //               <h4 class="text-primary">${player.nom}</h4>
-    //               <p class="text">
-    //                 <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
-    //                 <br />
-    //                 <i class="fa fa-phone" aria-hidden="true"></i> ${player.tel}
-    //                 <br />
-    //                 <i class="fa fa-map-marker" aria-hidden="true"></i> ${player.adresse}
-    //               </p>
-    //             </div>
-    //           </div>`;
-    //                 $("#profile").html(profile);
-    //             }
-    //         },
-    //         error: function() {
-    //             console.log("Quelque chose a mal tourné");
-    //         },
-    //     });
-    // });
+    $(document).on("click", "a.profile", function() {
+        var pid = $(this).data("id");
+        $.ajax({
+            url: "ajax.php",
+            type: "GET",
+            dataType: "json",
+            data: { id: pid, action: "getuser" },
+            success: function(player) {
+                if (player) {
+                    const userphoto = player.photo ? player.photo : "default.png";
+                    const profile = `<div class="row">
+                <div class="col-sm-6 col-md-4">
+                  <img src="uploads/${userphoto}" class="rounded responsive" />
+                </div>
+                <div class="col-sm-6 col-md-8">
+                  <h4 class="text-primary">${player.prenom}</h4>
+                  <h4 class="text-primary">${player.nom}</h4>
+                  <p class="text">
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ${player.email}
+                    <br />
+                    <i class="fa fa-phone" aria-hidden="true"></i> ${player.tel}
+                    <br />
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> ${player.adresse}
+                    <br />
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> ${player.cin}
+                    <br />
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> ${player.numpermis}
+                  </p>
+                </div>
+              </div>`;
+                    $("#profile").html(profile);
+                }
+            },
+            error: function() {
+                console.log("Quelque chose a mal tourné");
+            },
+        });
+    });
 
    // recherche
     $("#searchinput").on("keyup", function() {
         const searchText = $(this).val();
         if (searchText.length > 1) {
             $.ajax({
-                url: "ajax_assurance.php",
+                url: "ajax.php",
                 type: "GET",
                 dataType: "json",
                 data: { searchQuery: searchText, action: "search" },
-                success: function(assurances) {
-                    if (assurances) {
-                        var assuranceslist = "";
-                        $.each(assurances, function(index, assurance) {
-                            assuranceslist += getassurancerow(assurance);
+                success: function(players) {
+                    if (players) {
+                        var playerslist = "";
+                        $.each(players, function(index, player) {
+                            playerslist += getplayerrow(player);
                         });
-                        $("#assurancetable tbody").html(assuranceslist);
+                        $("#userstable tbody").html(playerslist);
                         $("#pagination").hide();
                     }
                 },
@@ -248,10 +255,10 @@ $(document).ready(function() {
                 },
             });
         } else {
-            getassurances();
+            getplayers();
             $("#pagination").show();
         }
     });
     // charger les utilisateurs
-    getassurances();
+    getplayers();
 });

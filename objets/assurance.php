@@ -9,6 +9,9 @@ class Assurance{
     // Propriétés d'objet
     public $id_assurance;
     public $id_utilisateur;
+    public $matricule;
+    public $categorie;
+    public $marque;
     public $type_assurance;
     public $montant_assurance;
     public $debut_assurance;
@@ -74,6 +77,7 @@ class Assurance{
             $query ="SELECT
                         id_assurance,
                         id_utilisateur,
+                        id_vehicule,
                         type_assurance,
                         montant_assurance,
                         debut_assurance,

@@ -22,7 +22,8 @@ class Assurance extends Database
             }
         }
 
-        $sql = "INSERT INTO {$this->tableName} (" . implode(',', $fileds) . ") VALUES (" . implode(',', $placholders) . ")";
+        $sql = "INSERT INTO {$this->tableName} (" . implode(',', $fileds) . ") 
+        VALUES (" . implode(',', $placholders) . ")";
         $stmt = $this->conn->prepare($sql);
         try {
             $this->conn->beginTransaction();
@@ -31,7 +32,7 @@ class Assurance extends Database
             $this->conn->commit();
             return $lastInsertedId;
         } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
+            echo "Erreur: " . $e->getMessage();
             $this->conn->rollback();
         }
 
@@ -74,9 +75,37 @@ class Assurance extends Database
 
     public function getRows($start = 0, $limit = 5)
     {
-        $sql = "SELECT id_utilisateur, type_assurance,montant_assurance,debut_assurance,fin_assurance,
-        DATEDIFF (`fin_assurance` , `debut_assurance` ) as duree_assurance  
-        FROM {$this->tableName} ORDER BY id_assurance DESC LIMIT {$start},{$limit}";
+        $sql = "SELECT 
+                    photo,
+                    prenom,
+                    nom,
+                    matricule,
+                    categorie,
+                    marque,
+                    type_assurance,
+                    montant_assurance,
+                    debut_assurance,
+                    fin_assurance,
+                DATEDIFF (`fin_assurance` , `debut_assurance` ) as duree_assurance  
+                FROM {$this->tableName} 
+                INNER JOIN utilisateurs 
+                ON assurance.id_utilisateur = utilisateurs.id
+                ORDER BY id_assurance 
+                DESC LIMIT {$start},{$limit}";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+
+            $results = [];
+        }
+        return $results;
+    }
+
+    public function getMembre($start = 0, $limit = 5)
+    {
+        $sql = "SELECT id FROM utilisateur DESC LIMIT {$start},{$limit}";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -143,9 +172,38 @@ class Assurance extends Database
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
             $results = [];
+
         }
 
         return $results;
     }
+
+        /**
+     * la fonction est utilisée pour télécharger le fichier
+     * @param array $file
+     * @return string $newFileName
+     */
+    public function uploadPhoto($file)
+    {
+        if (!empty($file)) {
+            $fileTempPath = $file['tmp_name'];
+            $fileName = $file['name'];
+            $fileSize = $file['size'];
+            $fileType = $file['type'];
+            $fileNameCmps = explode('.', $fileName);
+            $fileExtension = strtolower(end($fileNameCmps));
+            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+            $allowedExtn = ["jpg", "png", "gif", "jpeg"];
+            if (in_array($fileExtension, $allowedExtn)) {
+                $uploadFileDir = getcwd() . '/uploads/';
+                $destFilePath = $uploadFileDir . $newFileName;
+                if (move_uploaded_file($fileTempPath, $destFilePath)) {
+                    return $newFileName;
+                }
+            }
+
+        }
+    }
+
 
 }
