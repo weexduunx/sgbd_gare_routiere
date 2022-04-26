@@ -1,13 +1,11 @@
 # GESTION GARE ROUTIERE BEAUX MARAICHER DE DAKAR
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) 
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)]() 
 [![forthebadge](https://github.com/weexduunx/sgbd_gare_routiere/blob/b050f7c97beb33ee0571cda5579c2020504fc384/images/powered-by-digital-spirit-sn.svg)](https://www.linkedin.com/in/idrissa-ndiouck-82a426155/)
-[![forthebadge](https://forthebadge.com/images/badges/uses-brains.svg)](http://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](http://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](http://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](http://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](http://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/fixed-bugs.svg)](http://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/validated-html5.svg)]()
+[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)]()
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)]()
+[![forthebadge](https://forthebadge.com/images/badges/fixed-bugs.svg)]()
 
 Un sytéme de gestion pour le management des flux entrants et sortants des taximans de la gare routiére
 beaux maraîcher de Dakar
@@ -49,9 +47,6 @@ localhost/sgbd_gare_routiere-1 ou ``docker-compose run``
 * [HTML5](https://fr.wikipedia.org/wiki/HTML5)
 * [CSS3](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade#:~:text=CSS3%20devient%20%C2%AB%20modulaire%20%C2%BB%2C%20afin,des%20sous%2Densembles%20de%20CSS3)
 
-## Contributing
-
-Si vous souhaitez contribuer, contactez-moi par [Whatsapp](00221784673070) pour savoir comment le faire.
 
 ## Versions
 
