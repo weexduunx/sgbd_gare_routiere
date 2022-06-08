@@ -33,7 +33,7 @@
                                 
                                 <div class="mdc-list-item mdc-drawer-item">
                                     <li> <?php echo $page_title=="Utilisateurs" ? "class='active'" : ""; ?> 
-                                        <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/listeUtilisateur.php">
+                                        <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/membre/listeMembre.php">
                                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
                                         list
                                         </i>

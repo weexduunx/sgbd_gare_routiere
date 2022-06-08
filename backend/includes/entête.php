@@ -7,8 +7,8 @@
          
         <title><?php echo isset($page_title) ? strip_tags($page_title) : "Bokk Yakaar"; ?></title>
 
-            <link rel="stylesheet" href="css/fcfa-icon.css">
-            <link href="css/style.css" rel="stylesheet" >
+            <link rel="stylesheet" href="../css/fcfa-icon.css">
+            <link href="../css/style.css" rel="stylesheet" >
             <!-- CoreUI for Bootstrap CSS -->
             <link href="../assets/coreui/css/coreui.min.css" rel="stylesheet" >
             <!-- CSS only -->

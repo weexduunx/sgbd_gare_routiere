@@ -20,12 +20,12 @@
                 </div>
             </div>
                     <?php
-                        include_once 'form.php';
-                        include_once 'profile.php';
+                        include_once '../membre/form.php';
+                        include_once '../membre/profile.php';
                     ?>
                         
                     <?php
-                        include_once 'tableutilisateur.php';
+                        include_once '../membre/tableutilisateur.php';
                     ?>
                     <nav id="pagination"></nav>
                 <input type="hidden" name="currentpage" id="currentpage" value="1">
