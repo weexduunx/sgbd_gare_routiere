@@ -1,13 +1,13 @@
 <?php
 // Configuration de base
-include_once "configuration/config.php";
+include_once "frontend/configuration/config.php";
 
 // Définit le titre de la page
 $page_title = "Connexion";
  
 // inclure le vérificateur de connexion
 $require_login=false;
-include_once "verifconnex.php";
+include_once "frontend/include/verifconnex.php";
  
 // Par défaut à False
 $access_denied=false;
@@ -15,8 +15,8 @@ $access_denied=false;
 // Si le formulaire de connexion a été soumis
 if($_POST){
     // j'inclus les classes
-    include_once "configuration/bd.php";
-    include_once "objets/utilisateur.php";
+    include_once "frontend/configuration/bd.php";
+    include_once "frontend/objets/utilisateur.php";
     
     // Obtenir la connexion de base de données
     $basededonnee = new Basededonnee();
@@ -45,7 +45,7 @@ if($_POST){
     
         // Si le niveau d'accès est «admin», rediriger vers la section administrative
         if($utilisateur->niveau_dacces=='Admin'){
-            header("Location: {$home_url}admin/index.php?action=login_success");
+            header("Location: {$home_url}backend/index.php?action=login_success");
         }
     
         // sinon, rediriger uniquement la section «client»
@@ -61,7 +61,7 @@ if($_POST){
 }
  
 // Inclure l'en-tête de page HTML
-include_once "entêtelogin.php";
+include_once "frontend/include/entêtelogin.php";
   
     // Obtenez la valeur «Action» dans le paramètre URL pour afficher les messages d'invite correspondants
     $action=isset($_GET['action']) ? $_GET['action'] : "";
@@ -146,5 +146,5 @@ include_once "entêtelogin.php";
 
  
 // footer HTML and JavaScript codes
-include_once "piedlogin.php";
+include_once "frontend/include/piedlogin.php";
 ?>

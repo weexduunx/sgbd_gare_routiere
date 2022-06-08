@@ -27,7 +27,6 @@
         
             // initialiser les objets
             $utilisateur = new Utilisateur($db);
-            $utile = new Utile();
         
             // Définir l'e-mail utilisateur pour détecter s'il existe déjà
             $utilisateur->email=$_POST['email'];

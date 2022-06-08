@@ -1,16 +1,16 @@
 <?php
     // Configuration de base
-    include_once "configuration/config.php";
+    include_once "frontend/configuration/config.php";
     
     // Définit le titre de la page
     $page_title="Index";
     
     // inclure le vérificateur de connexion
     $require_login=true;
-    include_once "verifconnex.php";
+    include_once "frontend/include/verifconnex.php";
     
     // Inclure l'en-tête de la page HTML
-    include_once 'entête.php';
+    include_once 'frontend/include/entête.php';
     
     echo "<div class='col-md-12'>";
     
@@ -39,5 +39,5 @@
     echo "</div>";
     
     //Footer HTML et codes JavaScript
-    include 'pied.php';
+    include 'frontend/include/pied.php';
 ?>
