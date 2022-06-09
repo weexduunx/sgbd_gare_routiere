@@ -6,16 +6,16 @@ $(document).ready(function () {
 
     // Fonction pour afficher les assurances
     function afficherAssurance() {
-    $.ajax({
-        url: "action.php",
-        type: "POST",
-        data: {action: "viewAssurance"},
-        success: function (response){
-                console.log(response);
+        $.ajax({
+            url: "action.php",
+            type: "POST",
+            data: {action: "viewAssurance"},
+            success: function (response){
+                //console.log(response);
+                $('#showAssurance').html(response);
+
             }
-    });
-
+        });
     }   
-
 });
 
