@@ -10,7 +10,7 @@
                 <h4 class="card-title mb-0">Liste des Assurés</h4>
                 <div>
                     <div>
-                        <button type="button" class=" btn btn-primary m-1 float-right " data-toggle="modal" data-target="#addModal" id="addnewbtn">
+                        <button type="button" class=" btn btn-primary m-1 float-right " data-toggle="modal" data-target="#addAssuranceModal" id="addnewbtn">
                             <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>&nbsp;Ajouter  
                         </button>
                         <a href="#" class="btn btn-success m-1 float-right">

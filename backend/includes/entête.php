@@ -9,6 +9,8 @@
 
             <link rel="stylesheet" href="css/fcfa-icon.css">
             <link href="css/style.css" rel="stylesheet" >
+            <link href="node_modules/sweetalert2/dist/sweetalert2.css" rel="stylesheet" >
+            <link href="node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" >
             <!-- CoreUI for Bootstrap CSS -->
             <link href="assets/coreui/css/coreui.min.css" rel="stylesheet" >
             <!-- CSS only -->

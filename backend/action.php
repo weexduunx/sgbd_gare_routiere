@@ -63,6 +63,28 @@
 
     }
 
+    if(isset($_POST['action']) && $_POST['action'] == 'addAssurance'){
+        $membre = $_POST['membre'];
+        $categorie = $_POST['categorie'];
+        $matricule = $_POST['matricule'];
+        $marque = $_POST['marque'];
+        $typeassurance = $_POST['assurancetype'];
+        $montant = $_POST['montant'];
+        $datedebut = $_POST['datedebut'];
+        $datefin = $_POST['datefin'];
+
+        $db->insertion(
+            $membre, 
+            $categorie, 
+            $matricule, 
+            $marque, 
+            $typeassurance, 
+            $montant, 
+            $datedebut, 
+            $datefin
+        );
+    }
+
 
 
 

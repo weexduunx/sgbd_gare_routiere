@@ -61,14 +61,17 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 
             <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
+                    <!-- Fonctions AJAX -->
+                    <script src="js/assJS.js"></script>
+                     <!-- Fonctions AJAX -->
 
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script src="node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+            <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+
            
         <!-- JS, Popper.js, and jQuery -->
 
-        <!-- Fonctions AJAX -->
-            <script src="js/assJS.js"></script>
-        <!-- Fonctions AJAX -->
+
 
             
     </body>

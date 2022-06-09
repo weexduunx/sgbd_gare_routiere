@@ -27,8 +27,7 @@ class Database
         $typeassurance, 
         $montant, 
         $datedebut, 
-        $datefin, 
-        $photo)
+        $datefin)
     {
         $sql = "INSERT INTO assurance (
             id_utilisateur,  
@@ -38,29 +37,26 @@ class Database
             type_assurance, 
             montant_assurance, 
             debut_assurance, 
-            fin_assurance, 
-            photo)
+            fin_assurance)
         VALUES (
             :membre, 
             :matricule,
             :categorie,  
             :marque, 
-            :typeassurance, 
+            :assurancetype, 
             :montant, 
             :datedebut, 
-            :datefin, 
-            :photo)";
+            :datefin)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             ':membre' => $membre,
             ':matricule' => $matricule,
             ':categorie' => $categorie,
             ':marque' => $marque,
-            ':typeassurance' => $typeassurance,
+            ':assurancetype' => $typeassurance,
             ':montant' => $montant,
             ':datedebut' => $datedebut,
             ':datefin' => $datefin,
-            ':photo' => $photo
         ]);
 
         return true;
@@ -118,7 +114,7 @@ class Database
             matricule = :matricule,
             categorie = :categorie,
             marque = :marque,
-            type_assurance = :typeassurance,
+            type_assurance = :assurancetype,
             montant_assurance = :montant,
             debut_assurance = :datedebut,
             fin_assurance = :datefin,
@@ -131,7 +127,7 @@ class Database
             ':matricule' => $matricule,
             ':categorie' => $categorie,
             ':marque' => $marque,
-            ':typeassurance' => $typeassurance,
+            ':assurancetype' => $typeassurance,
             ':montant' => $montant,
             ':datedebut' => $datedebut,
             ':datefin' => $datefin,

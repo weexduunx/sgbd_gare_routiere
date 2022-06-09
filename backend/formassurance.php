@@ -1,7 +1,6 @@
 
 <!-- Formulaire Ajout-->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1" aria-hidden="true">
-
+<div class="modal fade" id="addAssuranceModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,7 +10,7 @@
         </button>
       </div>
         <div class="modal-body">
-        <form id="form-data" action="" method="post">
+        <form id="ajoutAssurance" action="" method="post">
 
           <div class="container-fluid">
             <div class="row">
@@ -20,7 +19,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">
                       <i class="fa fa-user-o" aria-hidden="true"></i>
                     </label>
-                    <select id="selMembre" name="id_utilisateur" class="form-select " aria-label=".form-select">
+                    <select id="membre" name="membre" class="form-select " aria-label=".form-select">
                         <option value="0" selected="selected">Selectioner le membre à assurer</option>
                         <?php
                           require_once 'page/config.php';
@@ -137,7 +136,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Annuler</button>
-          <button type="submit" class="btn btn-success" name="insert" id="insert"><span class="glyphicon glyphicon-floppy-disk"></span>Ajouter</button>
+          <button type="submit" class="btn btn-success" name="addAssurance" id="addAssurance"><span class="glyphicon glyphicon-floppy-disk"></span>Ajouter</button>
         </div>
       </form>
     </div>
