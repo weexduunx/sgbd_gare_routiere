@@ -3,8 +3,8 @@
         <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
             <div class="mdc-drawer__header">
                 <a href="<?php echo $home_url; ?>backend/index.php" class="brand-logo">
-                    <h4 class="text-center mdc-typography mdc-theme--light">SGBD <span>Bokk Yakaar</span></h4>
-                    <!--<img src="../assets/images/logo.svg" alt="logo">-->
+                    <!-- <h4 class="text-center mdc-typography mdc-theme--light">SGBD <span>Bokk Yakaar</span></h4> -->
+                    <img src="<?php echo $home_url; ?>backend/assets/images/logo-app-1.png" width="195"  alt="logo">
                 </a>
             </div>
             <div class="mdc-drawer__content">
@@ -32,8 +32,8 @@
                             <nav class="mdc-list mdc-drawer-submenu">
                                 
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <li> <?php echo $page_title=="Utilisateurs" ? "class='active'" : ""; ?> 
-                                        <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/membre/listeMembre.php">
+                                    <li> <?php echo $page_title=="Membres" ? "class='active'" : ""; ?> 
+                                        <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/listeMembre.php">
                                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
                                         list
                                         </i>
@@ -71,7 +71,8 @@
                         <div class="mdc-expansion-panel" id="sous_menu1">
                             <nav aria-label="adminMenu" class="mdc-list mdc-drawer-submenu">
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="listeAssurance.php">
+                                <?php echo $page_title=="Assurance" ? "class='active'" : ""; ?> 
+                                    <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/listeAssurance.php">
                                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
                                             list
                                         </i>

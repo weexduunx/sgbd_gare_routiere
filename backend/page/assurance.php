@@ -10,22 +10,24 @@
                 <h4 class="card-title mb-0">Liste des Assurés</h4>
                 <div>
                     <div>
-                        <button type="button" class="mdc-button " data-toggle="modal" data-target="#assuranceModal" id="addnewbtn">
-                            Ajouter 
-                            <i class="fa fa-plus-circle " aria-hidden="true"></i>
+                        <button type="button" class=" btn btn-primary m-1 float-right " data-toggle="modal" data-target="#addModal" id="addnewbtn">
+                            <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i>&nbsp;Ajouter  
                         </button>
+                        <a href="#" class="btn btn-success m-1 float-right">
+                            <i class="fa fa-table fa-lg" aria-hidden="true"></i>&nbsp;Exporter vers Excel
+                        </a>
                     </div>
                 </div>
             </div>
                 
                     <?php
+                        include_once 'formassurance.php';
+                        include_once 'profile.php';
                     ?>
                         
                     <?php
                         include_once 'tableassurance.php';
                     ?>
-                        <nav id="pagination"></nav>
-                        <input type="hidden" name="currentpage" id="currentpage" value="1">
                  
             </div>
         </div>

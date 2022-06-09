@@ -61,7 +61,7 @@ if($_POST){
 }
  
 // Inclure l'en-tête de page HTML
-include_once "frontend/include/entêtelogin.php";
+include_once "frontend/include/entetelogin.php";
   
     // Obtenez la valeur «Action» dans le paramètre URL pour afficher les messages d'invite correspondants
     $action=isset($_GET['action']) ? $_GET['action'] : "";
