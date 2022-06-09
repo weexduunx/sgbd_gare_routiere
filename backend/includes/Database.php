@@ -66,10 +66,9 @@ class Database
         return true;
     }
 
-    public function lecture($start = 0, $limit = 5){
+    public function lecture(){
         $data = array();
-        $sql = "SELECT                     
-        photo,
+        $sql = "SELECT
         prenom,
         nom,
         matricule,
@@ -83,17 +82,14 @@ class Database
         FROM assurance
         INNER JOIN utilisateurs 
                 ON assurance.id_utilisateur = utilisateurs.id
-                ORDER BY id_assurance 
-                DESC LIMIT {$start},{$limit}";
+                ORDER BY id_assurance ";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        if ($stmt->rowCount() > 0) {
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-
-            $results = [];
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row){
+            $data[] = $row;
         }
-        return $results;
+        return $data;
 
     }
 
@@ -159,7 +155,5 @@ class Database
         return $result['total'];
     }
 
-
 }
-$ob = new Database();
-echo $ob->total();
+?>
