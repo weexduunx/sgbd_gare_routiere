@@ -63,7 +63,7 @@ function getplayers() {
             console.log(rows);
             if (rows.players) {
                 var playerslist = "";
-                $.each(rows.players, function(index, player) {
+                $.each(rows.players, function(player) {
                     playerslist += getplayerrow(player);
                 });
                 $("#userstable tbody").html(playerslist);

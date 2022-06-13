@@ -21,7 +21,7 @@
                       <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
                           aria-hidden="true"></i>
                     </div>
-                    <input type="text" class="form-control" id="prenom" name="prenom" required="required">
+                    <input type="text" class="form-control" id="prenom" name="prenom" >
                   </div>
               </div>
               <div class="form-group col-md-6">
@@ -31,7 +31,7 @@
                       <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"
                           aria-hidden="true"></i>
                     </div>
-                    <input type="text" class="form-control" id="nom" name="nom" required="required">
+                    <input type="text" class="form-control" id="nom" name="nom" >
                   </div>
               </div>
             </div> 
@@ -43,7 +43,7 @@
                       <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"
                           aria-hidden="true"></i></span>
                     </div>
-                    <input type="phone" class="form-control" id="tel" name="tel" required="required" maxLength="10"
+                    <input type="phone" class="form-control" id="tel" name="tel"  maxLength="10"
                       minLength="10">
                   </div>
               </div>
@@ -54,7 +54,7 @@
                       <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"
                           aria-hidden="true"></i></span>
                     </div>
-                    <input type="email" class="form-control" id="email" name="email" required="required">
+                    <input type="email" class="form-control" id="email" name="email" >
                   </div>
               </div>
             </div> 
@@ -66,7 +66,7 @@
                       <span class="input-group-text" id="basic-addon1">
                       <i class="fa-regular fa fa-id-card"></i>
                     </div>
-                    <input type="text" class="form-control" id="numpermis" name="numpermis" required="required">
+                    <input type="text" class="form-control" id="numpermis" name="numpermis" >
                   </div>
               </div>
               <div class="form-group col-md-6">
@@ -76,7 +76,7 @@
                       <span class="input-group-text" id="basic-addon1">
                       <i class="fa-solid fa fa-id-card"></i>
                     </div>
-                    <input type="text" class="form-control" id="cin" name="cin" required="required">
+                    <input type="text" class="form-control" id="cin" name="cin">
                   </div>
               </div>
             </div> 
@@ -88,7 +88,7 @@
                       <span class="input-group-text" id="basic-addon1">
                       <i class="fa-regular fa fa-id-card"></i>
                     </div>
-                    <input type="text" class="form-control" id="adresse" name="adresse" required="required">
+                    <input type="text" class="form-control" id="adresse" name="adresse" >
                   </div>
               </div>
               <div class="form-group col-md-4">

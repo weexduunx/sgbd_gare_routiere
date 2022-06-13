@@ -65,6 +65,7 @@ class Database
     public function lecture(){
         $data = array();
         $sql = "SELECT
+        id_assurance,
         prenom,
         nom,
         matricule,
@@ -90,9 +91,9 @@ class Database
     }
 
     public function lectureParId($id){
-        $sql = "SELECT * FROM assurance WHERE id_assurance = :id";
+        $sql = "SELECT * FROM assurance WHERE id_assurance = :id_assurance";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':id' => $id]);
+        $stmt->execute([':id_assurance' => $id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
 
@@ -100,38 +101,32 @@ class Database
 
     public function modification(
         $id, 
-        $membre, 
         $categorie, 
         $matricule, 
         $marque, 
         $typeassurance, 
         $montant, 
         $datedebut, 
-        $datefin, 
-        $photo){
+        $datefin){
         $sql = "UPDATE assurance SET 
-            id_utilisateur = :membre,
             matricule = :matricule,
             categorie = :categorie,
             marque = :marque,
             type_assurance = :assurancetype,
             montant_assurance = :montant,
             debut_assurance = :datedebut,
-            fin_assurance = :datefin,
-            photo = :photo
+            fin_assurance = :datefin
         WHERE id_assurance = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             ':id' => $id,
-            ':membre' => $membre,
             ':matricule' => $matricule,
             ':categorie' => $categorie,
             ':marque' => $marque,
             ':assurancetype' => $typeassurance,
             ':montant' => $montant,
             ':datedebut' => $datedebut,
-            ':datefin' => $datefin,
-            ':photo' => $photo
+            ':datefin' => $datefin
         ]);
         return true;
     }

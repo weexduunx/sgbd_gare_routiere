@@ -107,7 +107,7 @@ include_once "frontend/include/entetelogin.php";
             echo '<div class="mdc-layout-grid__inner">';
                 echo '<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">';
                     echo '<div class="mdc-text-field w-100">';
-                           echo '<input class="mdc-text-field__input" name="email" id="text-field-hero-input" required autofocus>';
+                           echo '<input class="mdc-text-field__input" name="email" id="text-field-hero-input text" required autofocus>';
                            echo '<div class="mdc-line-ripple"></div>';
                            echo '<label for="text-field-hero-input" class="mdc-floating-label">Email</label>';
                     echo '</div>';

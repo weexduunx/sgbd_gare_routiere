@@ -20,39 +20,35 @@
     </div>
         <!--Fin Emballage Principal -->
             </div>
+
         <!-- JS, Popper.js, and jQuery -->
-           
             <script src="node_modules/jquery/dist/jquery.js"></script>
-            <script src="node_modules/jquery/dist/jquery.min.js"></script>            
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-
             <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-            <script src="js/script.js"></script>
-
-            
-
         <!-- JS, Popper.js, and jQuery -->
 
-        <!-- tableau de bord js -->
+        <!-- SweetAlert -->
+            <script src="node_modules/sweetalert2/dist/sweetalert2.js"></script>
+        <!-- SweetAlert -->
 
-        <!-- tableau de bord js -->
+            <script src="js/script.js"></script>
 
-        <!-- plugins:js -->
-            <script src="assets/coreui/js/coreui.bundle.min.js"></script>
         <!-- plugins:js -->
             <script src="assets/vendors/js/vendor.bundle.base.js"></script>
         <!-- endinject -->
+
         <!-- Plugin js for this page-->
             <script src="assets/vendors/chartjs/Chart.min.js"></script>
             <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
             <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
         <!-- End plugin js for this page-->
+
         <!-- inject:js -->
             <script src="assets/js/material.js"></script>
             <script src="assets/js/misc.js"></script>
         <!-- endinject -->
+        
         <!-- Custom js for this page-->
             <script src="assets/js/dashboard.js"></script>
         <!-- End custom js for this page-->
