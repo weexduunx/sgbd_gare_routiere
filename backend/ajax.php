@@ -2,7 +2,7 @@
 $action = $_REQUEST['action'];
 
 if (!empty($action)) {
-    require_once 'includes/membre.php';
+    require_once 'includes/Player.php';
     $obj = new Player();
 }
 
