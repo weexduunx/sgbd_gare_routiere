@@ -1,6 +1,6 @@
 <?php
         // Configuration de base
-    include_once "../configuration/config.php";
+    include_once "configuration/config.php";
     
     // Vérifier si connecté en tant qu'administrateur
     include_once "verifconnex.php";
@@ -20,11 +20,11 @@
     $page_title = "Liste des Assurés";
 
     //inclure l'entête
-    include "entête.php";
+    include "assCrud/entete.php";
     //inclure la table de données
     include "page/assurance.php";
     //inclure le pied de page
-    include "pied.php";
+    include "assCrud/pied.php";
 
     
 ?>

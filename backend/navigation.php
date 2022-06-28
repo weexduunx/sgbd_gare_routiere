@@ -71,7 +71,7 @@
                         <div class="mdc-expansion-panel" id="sous_menu1">
                             <nav aria-label="adminMenu" class="mdc-list mdc-drawer-submenu">
                                 <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="listeAssurance.php">
+                                    <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/listeAssurance.php">
                                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
                                             list
                                         </i>

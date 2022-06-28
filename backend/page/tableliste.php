@@ -12,9 +12,7 @@
                     <div>
                         <button type="button" class="mdc-button " data-toggle="modal" data-target="#userModal" 
                             id="addnewbtn">Ajouter 
-                            <i class="fa fa-plus-circle " aria-hidden="true">
-        
-                            </i>
+                            <i class="fa fa-plus-circle " aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
