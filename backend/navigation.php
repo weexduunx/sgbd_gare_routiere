@@ -3,8 +3,10 @@
         <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
             <div class="mdc-drawer__header">
                 <a href="<?php echo $home_url; ?>admin/index.php" class="brand-logo">
-                    <h4 class="text-center mdc-typography mdc-theme--light">SGBD <span>Bokk Yakaar</span></h4>
-                    <!--<img src="../assets/images/logo.svg" alt="logo">-->
+                    <h4 class="text-center mdc-typography mdc-theme--light">
+                        <i class="fa fa-database fa-lg"></i>&nbsp;SGBD
+                    <span>Bokk Yakaar</span></h4>
+                    <!-- <img src="assets/images/logo-app-1.png" alt="logo" height="50"> -->
                 </a>
             </div>
             <div class="mdc-drawer__content">
@@ -24,7 +26,7 @@
                     
                     <div class="mdc-list-item mdc-drawer-item">
                         <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="ui-sub-menu">
-                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">folder_special</i> Gestion Membres
+                            <i class="fa fa-folder-open-o fa-lg" aria-hidden="true"></i>&nbsp;Gestion Membres
                             <i class="mdc-drawer-arrow material-icons">chevron_right</i>
                         </a>
                         
@@ -37,27 +39,20 @@
                                         <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">
                                         list
                                         </i>
-                                        Listes
+                                        Membres
                                         </a>
                                     </li>
                                 </div>
-                                
                                 <div class="mdc-list-item mdc-drawer-item">
-                                
-                                    <a class="mdc-drawer-link" href="#">
-                                    <i class="fcfa-icon fcfa-2x mdc-list-item__start-detail mdc-drawer-item-icon"> </i>
-                                        Cotisation
+                                    <a class="mdc-drawer-link" href="<?php echo $home_url; ?>backend/listeCommande.php">
+                                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon">list </i>
+                                       Commandes
                                     </a>
                                 </div>
                                 <div class="mdc-list-item mdc-drawer-item">
                                     <a class="mdc-drawer-link" href="#">
-                                    <i class="fcfa-icon fcfa-2x mdc-list-item__start-detail mdc-drawer-item-icon"> </i>
-                                        Paiement
-                                    </a>
-                                </div>
-                                <div class="mdc-list-item mdc-drawer-item">
-                                    <a class="mdc-drawer-link" href="#">
-                                        Commande
+                                    <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon">list </i>
+                                        Cotisations
                                     </a>
                                 </div>
                             </nav>
@@ -65,7 +60,7 @@
                     </div>
                     <div class="mdc-list-item mdc-drawer-item">
                         <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="sous_menu1">
-                            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">folder_special</i> Assurance
+                            <i class="fa fa-folder-open-o fa-lg" aria-hidden="true"></i>&nbsp;Gestion Assurances
                             <i class="mdc-drawer-arrow material-icons">chevron_right</i>
                         </a>
                         <div class="mdc-expansion-panel" id="sous_menu1">
@@ -76,12 +71,6 @@
                                             list
                                         </i>
                                         liste
-                                    </a>
-                                    <a class="mdc-drawer-link" href="ajoutAssurance.php" >
-                                        <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon "   aria-hidden="true">
-                                            add
-                                        </i>
-                                        Ajouter
                                     </a>
                                 </div>
                             </nav>
@@ -115,7 +104,7 @@
                                 <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                                     <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
                                     <span class="mdc-top-app-bar__title">Bienvenue <?php echo $_SESSION['prenom']; ?>!</span>
-                                    <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
+                                    <!-- <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
                                         <i class="material-icons mdc-text-field__icon">search</i>
                                         <input class="mdc-text-field__input" id="searchinput">
                                         <div class="mdc-notched-outline">
@@ -125,7 +114,7 @@
                                             </div>
                                             <div class="mdc-notched-outline__trailing"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end mdc-top-app-bar__section-right">
                                     <div class="menu-button-container menu-profile d-none d-md-block">

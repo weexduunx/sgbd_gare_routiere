@@ -15,7 +15,6 @@
                     <label  id="addnew" class="btn btn-outline-success"> Ajouter
                         <i class="fa fa-plus-circle fa-lg " aria-hidden="true"></i>&nbsp;
                     </label>&nbsp;&nbsp;
-
                     <label id="bouton" class=""></label>
                 </div>                
             </div>

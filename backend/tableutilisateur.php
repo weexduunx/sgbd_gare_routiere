@@ -1,6 +1,6 @@
 <!-- table -->
 <div class="table-responsive">
-<table class="table table-hoverable " id="userstable">
+<table class="table table-hoverable tab" id="userstable">
   <thead>
     <tr>
       <th></th>

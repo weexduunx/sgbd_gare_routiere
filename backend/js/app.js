@@ -160,9 +160,9 @@ function fetch(){
 							extend: 'pdfHtml5',
 							className: 'btn btn-danger',
 							orientation: 'landscape',
-							pageSize: 'LEGAL'
+							pageSize: 'A4'
 						}	
-				 ],
+				 	],
 				} );
 
 				table.buttons().container()

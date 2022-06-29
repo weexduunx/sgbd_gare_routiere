@@ -6,14 +6,14 @@
     include_once "verifconnex.php";
     
     // Définir le titre de la page
-    $page_title = "Liste des Membres";
+    $page_title = "Liste des Commandes";
 
     //inclure l'entête
-    include "entête.php";
+    include "comCrud/entete.php";
     //inclure la table de données
-    include "page/tableliste.php";
+    include "page/commande.php";
     //inclure le pied de page
-    include "pied.php";
+    include "comCrud/pied.php";
 
     
 ?>

@@ -2,7 +2,7 @@
 <table id="tableId" class="table  table-hoverable table-responsive" >
   <thead>
     <tr>
-      <th>ID</th>
+      <th>#</th>
       <th>Prenom</th>
       <th>Nom</th>
       <th>Matricule</th>
@@ -13,7 +13,7 @@
       <th>Debut Assurance</th>
       <th>Fin Assurance</th>
       <th>Durée Assurance</th>
-      <th></th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody id="tbody"></tbody>
