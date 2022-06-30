@@ -13,16 +13,20 @@ $(function () {
                 data: formOrder.serialize() + '&action=create',
                 success: function (response) {
                     // console.log(response);
-                    $('#creatmodal').modal('hide');
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Commande enregistré avec succés',
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Commande enregistré avec succés',
+                        });
+                    
+                        formOrder[0].reset(); 
+                        $('#createModal').modal('hide');
+                        $('#comTab').DataTable();
+                        window.location.reload(true);
+                        
 
-                    })
-                    formOrder[0].reset();
-                }
+                },
 
-            })
+            });
         }
     })
 
@@ -40,8 +44,8 @@ $(function () {
                 $('#orderTable').html(response);
                 $('#comTab').DataTable();
 
-            }
-        })
+            },
+        });
     }
 
 

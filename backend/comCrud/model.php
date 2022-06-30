@@ -14,14 +14,16 @@ class Database
         }
     }
 
-    public function create(int $utilisateur, int $produit, int $montant, int $percu, int $retourne, string $etat)
+
+    public function create(string $numcom, int $utilisateur, int $produit, int $montant, int $percu, int $retourne, string $etat)
     {
 
         $q = $this->getConnexion()->prepare(
-            "INSERT INTO commande (`id_utilisateur`, `id_produit`, `montant`, `percu`, `retourne`, `etat`) 
-             VALUES (:id_utilisateur, :id_produit, :montant, :percu, :retourne, :etat)"
+            "INSERT INTO commande (`num_com`,`id_utilisateur`, `id_produit`, `montant`, `percu`, `retourne`, `etat`) 
+             VALUES (:num_com, :id_utilisateur, :id_produit, :montant, :percu, :retourne, :etat)"
         );
         return $q->execute([
+            ':num_com' => $numcom,
             'id_utilisateur' => $utilisateur,
             'id_produit' => $produit,
             'montant' => $montant,
@@ -34,7 +36,7 @@ class Database
     public function read()
     {
         return $this->getConnexion()->query(
-            "SELECT id_com, prenom,nom, libelle,montant, percu, retourne, etat 
+            "SELECT id_com,num_com, prenom,nom, libelle,montant, percu, retourne, etat 
                 FROM commande
                 INNER JOIN utilisateurs 
                 ON commande.id_utilisateur = utilisateurs.id
@@ -48,4 +50,5 @@ class Database
     {
         return (int)$this->getConnexion()->query("SELECT COUNT(id_com) as count FROM commande")->fetch()[0];
     }
+
 }

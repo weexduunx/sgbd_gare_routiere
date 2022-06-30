@@ -1,4 +1,5 @@
 <!-- Modal -->
+
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -11,7 +12,31 @@
       	<div class="modal-body">
             <form id="formOrder" method="post" action="">
 				<div class="row">
-					<div class="form-group col-md-12">
+					<div class="form-group col-md-6">
+						<div class="input-group mb-3">
+						  <div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+							  N° Com.
+							</span>
+						  </div>
+						  	<?php						  
+
+								function genererChaineAleatoire ($longueur, $listeCar = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+								{
+									$chaine = '';
+									$max = mb_strlen($listeCar, '8bit') - 1;
+									for ($i = 0; $i < $longueur; ++$i) {
+									$chaine .= $listeCar[random_int(0, $max)];
+									}
+									return $chaine;
+								}
+								$chaine = genererChaineAleatoire(3);
+								$ref = 'COM'.'-'.date('Ym', time()).'-'.$chaine;
+					  		?>
+						  <input type="text" placeholder="<?php echo $ref; ?>"  value="<?php echo  $ref; ?>" id="numcom" name="numcom">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<label class="input-group-text" for="inputGroupSelect01">
@@ -116,7 +141,7 @@
 								</select>
 							</div>
 						</div>
-					</div> 
+					</div>
 				</div> 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>

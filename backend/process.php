@@ -6,7 +6,7 @@ $db = new Database();
 if (isset($_POST['action']) && $_POST['action'] == 'create') {
     extract($_POST);
     $retourne = (int)$percu - (int)$montant;
-    $db->create((int)$utilisateur, (int)$produit, (int)$montant, (int)$percu, (int)$retourne, $etat);
+    $db->create((string)$numcom, (int)$utilisateur, (int)$produit, (int)$montant, (int)$percu, (int)$retourne, $etat);
     echo 'parfait';
 }
 
@@ -20,6 +20,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>N° Commande</th>
                     <th>Membre bénéficiaire</th>
                     <th>Produit</th>
                     <th>Prix du Produit</th>
@@ -32,15 +33,26 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
             <tbody>
         ';
         foreach ($commandes as $commande) {
-            $output .= "
+
+            if ($commande->etat == 'Facturée') {
+                $etat = '<span class="badge badge-warning">Facturée</span>';
+            } elseif ($commande->etat == 'Payée') {
+                $etat = '<span class="badge badge-success">Payée</span>';
+            }  elseif ($commande->etat == 'Annulée') {
+                $etat = '<span class="badge badge-danger">Annulée</span>';
+            }
+            $output .= 
+            
+            "
             <tr>
                 <td>$commande->id_com</td>
+                <td><span class='badge badge-pill badge-secondary'>$commande->num_com</span></td>
                 <td>$commande->prenom  $commande->nom</td>
                 <td>$commande->libelle</td>
                 <td>$commande->montant</td>
                 <td>$commande->percu</td>
                 <td>$commande->retourne</td>
-                <td>$commande->etat</td>
+                <td>$etat</td>
                 <td>
                 <a href='#' class='btn btn-info mr-3 infoBtn' title='Voir détails'>
                     <i class='fa fa-info-circle fa-lg' aria-hidden='true'></i>
@@ -57,7 +69,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'fetch') {
         }
         $output .= "</tbody></table>";
         echo $output;
-    } else {
+    }
+     else {
         echo "<h3> Aucune commande pour le moment !</h3>";
     }
 }
